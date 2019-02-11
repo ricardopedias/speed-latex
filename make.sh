@@ -9,101 +9,236 @@
 # Este programa gerencia projetos latex.
 #---------------------------------------------------------------------------------------------------
 
+SCRIPT_USE=$'Mode de Usar: speed-latex [comandos: -p|-t|-c|-o|-f|-d [valores]
+Use speed-latex -h|--help para mais informações';
+
+SCRIPT_HELP=$'Speed Latex
+Copyright (c) 2018-2019 Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+Mode de Usar: speed-latex [comandos: -p|-t|-c|-o|-f|-d [valores]
+-----------------------------------------------------------------------------------------
+Comandos disponíveis:
+    Criar novos projetos latex:
+    -p|--project=nome-do-projeto
+    -t|--type=article|book|letter|report
+    Compilar projetos existentes:
+    -c|--compile="nome-do-projeto"
+    -o|--output="caminho/para/salvar/o/documento.pdf"
+    -f|--format="pdf"
+    Excluir projetos:
+    -d|--delete="caminho/para/o/diretório/do/projeto"
+    Ajuda:
+    -h|--help
+';
+
+# variáveis padrões
 libs_dir="/usr/share/speed-latex";
 work_dir="$HOME/.speed-latex/temp";
 curr_dir="$PWD";
-
-# determina se o programa está sendo executado em desenvolvimento
 devel_mode='no';
-if [ -f "$curr_dir/make.sh" ]; then
-    devel_mode='yes';
-fi
 
-# cria o diretório temporário para testes
-if [ ! -d "$curr_dir/tests/temp" ] && [ "$devel_mode" = "yes" ]; then
-    mkdir -p $curr_dir/tests/temp;
-fi
+# parâmetros padrões
+project_create='none';
+project_type='article';
+project_compile='none';
+project_output='none';
+project_format='pdf';
+project_delete='none';
+help='none';
 
-# cria o diretório de trabalho do usuário
-# se ele não existir
-if [ ! -d $work_dir ]; then
-    mkdir -p $work_dir;
-fi
+# ----------------------------------------------------------------------------------------------------------------------
+# NORMALIZA OS PARÂMETROS PASSADOS
+# ----------------------------------------------------------------------------------------------------------------------
 
-SCRIPT_USE=$'Mode de Usar: speed-latex <comando> <projeto|file.tex> [parâmetros]
-Use speed-latex --help para mais informações';
 
-SCRIPT_HELP=$'GIT Tools
-Mode de Usar: speed-latex <comando> <projeto|file.tex> [parâmetros]
------------------------------------------------------------------------------------------
-Comandos disponíveis:
-    -p|--project "nome-do-projeto" : Cria um novo projeto latex
-    -c|--compile "arquivo latex-project.tex" : compila o projeto especificado
-    -h|--help : Exibe o texto de ajuda
-    ';
+declare -A params; # cria um array vazio
+salt="no"; # para controlar os parâmetros posicionais
+long_empty="no"; # para controlar se o último parâmetro foi expandido e vazio
+index=0; # para controlar o indice do array
 
-document_type='article';
-
-# opções solitárias
-for param in "$@"
+for option in "$@"
 do
-    case $param in
 
-        -h|--help)
-            echo "$SCRIPT_USE";
-            exit 1;
+    # parâmetros minimalistas não devem conter atribuição (=)
+    if [ "${option:0:2}" != "--" ] && [ "${option:0:1}" == "-" ] && [[ $option == *"="* ]]; # contem atribuição
+    then
+
+        option_key=$(echo $option | cut -d \= -f 1);
+        option_value=$(echo $option | cut -d \= -f 2);
+        echo "O formato \"$option\" é inválido. Tente $option_key $option_value ";
+        exit 1; #erro
+
+    fi
+
+    # parâmetro de atribuição
+    if [[ $option == *"="* ]]; then
+
+        let "x = x +1"; # avança o indice
+
+        option_key=$(echo $option | cut -d \= -f 1);
+        option_key=${option_key#--*};
+        option_value="${option#*=}";
+        params["$x"]="$option_key=$option_value";
+
+        salt="no"; # zera o salt
+        long_empty='no'; # zera o longo vazio
+        continue;
+
+    fi
+
+    # parâmetro de atribuição sem valor
+    if [ "${option:0:2}" == "--" ]; then
+
+        let "x = x +1"; # avança o indice
+
+        option_key=${option#-*}; # remove o '-'
+        option_value="yes"; # o valor será 'yes'
+
+        salt="no"; # zera o salt
+        long_empty="$option_key";
+        continue;
+
+    fi
+
+    # parâmetro de posicionamento
+    if [ "${option:0:1}" == "-" ]; then
+
+        let "x = x +1"; # avança o indice
+
+        option_key=${option#-*}; # remove o '-'
+        option_value="yes"; # por padrão, o valor será 'yes'
+        params["$x"]="$option_key=$option_value";
+
+        # na proxima iteração, verifica se o valor foi setado explicitamente
+        salt="yes";
+        long_empty='no'; # zera o longo vazio
+        continue;
+
+    fi
+
+    # ultima iteração foi um parâmetro de posicionamento
+    if [ "$salt" = "yes" ]; then
+
+        option_value="$option";
+        params["$x"]="${option_key}=${option_value}";
+        salt="no";
+        long_empty='no'; # zera o longo vazio
+
+        continue;
+    fi
+
+    if [ "$long_empty" != 'no' ]; then
+
+        echo "O formato \"$long_empty $option\" é inválido. Tente $long_empty=$option";
+        exit 1; #erro
+
+    else
+
+        option_key=$(echo $option | cut -d \= -f 1);
+        option_value=$(echo $option | cut -d \= -f 2);
+        echo "O parâmetro $option é inválido.";
+        exit 1; #erro
+    fi
+
+done;
+
+# ----------------------------------------------------------------------------------------------------------------------
+# PARSEAMENTO DOS PARÂMETROS
+# ----------------------------------------------------------------------------------------------------------------------
+
+for option in "${params[@]}";
+do
+
+    # option_key=$(echo $option | cut -d \= -f 1);
+    # option_value=$(echo $option | cut -d \= -f 2);
+
+    case $option in
+
+        p=*|project=*)
+            project_create="${option#*=}";
         ;;
 
-        -a|--article)
-            document_type='article';
+        t=*|type=*)
+            project_type="${option#*=}";
         ;;
 
-        -b|--book)
-            document_type='book';
+        c=*|compile=*)
+            project_compile="${option#*=}";
         ;;
 
-        -l|--letter)
-            document_type='letter';
+        o=*|output=*)
+            project_output="${option#*=}";
         ;;
 
-        -r|--report)
-            document_type='report';
+        f=*|format=*)
+            project_format="${option#*=}";
         ;;
 
+        d=*|delete=*)
+            project_delete="${option#*=}";
+        ;;
+
+        h=*|help=*)
+            help="${option#*=}";
+        ;;
     esac
 
 done;
 
-# cria um novo projeto latex
-if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
+# ----------------------------------------------------------------------------------------------------------------------
+# PREPARAÇÃO DO AMBIENTE
+# ----------------------------------------------------------------------------------------------------------------------
 
-    if [ -z "$2" ] && [ "$devel_mode" = 'no' ]; then
+# determina se o programa está sendo executado em modo de desenvolvimento
+if [ -f "$curr_dir/make.sh" ]; then
 
-        # Parametro invalido
-        echo "É obrigatório especificar o nome do projeto";
-        echo "Ex: speed-latex $1 \"meu-projeto\"";
-        exit 1;
+    devel_mode='yes';
 
+    # cria o diretório temporário para testes
+    if [ ! -d "$curr_dir/tests/temp" ]; then
+        mkdir -p $curr_dir/tests/temp;
     fi
+
+    # re-instala sempre as bibliotecas
+    sudo ./uninstall.sh
+    sudo ./install.sh
+
+fi
+
+# cria o diretório de trabalho do usuário
+if [ ! -d $work_dir ]; then
+    mkdir -p $work_dir;
+fi
+
+# ----------------------------------------------------------------------------------------------------------------------
+# CRIAÇÃO DE PROJETOS
+# ----------------------------------------------------------------------------------------------------------------------
+# Possíveis variáveis:
+#    $project_create
+#    $project_type [ padrão = 'article' ]
+# ----------------------------------------------------------------------------------------------------------------------
+
+if [ "$project_create" != "none" ]; then
 
     # valida o nome especificado para o projeto
-    if [[ $2 == *"/"* ]]; then
+    if [[ $project_create == *"/"* ]]; then
         echo "O nome especificado para o projeto é inválido!";
-        exit;
+        exit 1; # erro
     fi
 
+    # determina o local de criação do projeto
     if [ "$devel_mode" = 'yes' ]; then
-        project_dir=$curr_dir/tests/temp/$2;
+        project_dir=$curr_dir/tests/temp/$project_create;
     else
-        project_dir=$curr_dir/$2;
+        project_dir=$curr_dir/$project_create;
     fi
 
     # cria o diretório do projeto
     if [ -d "${project_dir}" ] && [ -d "${project_dir}/libraries" ]; then
-        echo "O projeto $2 já existe!";
-        exit 1;
+        echo "O projeto $project_create já existe!";
+        exit 1; #erro
     fi
 
+    # cria o diretório do novo projeto
     mkdir $project_dir;
 
     # cria as bibliotecas
@@ -113,11 +248,11 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
     cp /usr/share/speed-latex/libraries/document-functions.tex $project_dir/libraries/document-functions.tex;
     cp /usr/share/speed-latex/libraries/document-packages.tex $project_dir/libraries/document-packages.tex;
 
-    # cria o conteudo
+    # cria o conteúdo
     mkdir -p $project_dir/contents;
 
     # cria o documento do projeto
-    case $document_type in
+    case $project_type in
         article)
             echo "Criando um projeto de artigo em $project_dir";
             cp /usr/share/speed-latex/templates/article/class-article.cls $project_dir/libraries/class-article.cls;
@@ -149,6 +284,12 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
             cp /usr/share/speed-latex/templates/report/example.tex $project_dir/contents/example.tex;
             cp /usr/share/speed-latex/templates/report/cover-simple.tex $project_dir/contents/cover-simple.tex;
         ;;
+
+        *)
+            echo "Tipo inválido de projeto";
+            echo "Os tipos disponiveis são article|book|letter|report"
+            exit 1; #erro
+        ;;
     esac
 
     # cria as variáveis
@@ -156,42 +297,52 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
 
     # cria o diretório de assets
     mkdir -p $project_dir/assets;
+
     # copia o logotipo de exemplo
     cp /usr/share/speed-latex/libraries/assets/logo.eps $project_dir/assets/logo.eps;
     cp /usr/share/speed-latex/libraries/assets/readme.txt $project_dir/assets/readme.txt;
 
+    exit 0; #ok
+
 fi
 
-# compila um projeto latex existente
-if [ "$1" = "-c" ] || [ "$1" = "--compile" ]; then
+# ----------------------------------------------------------------------------------------------------------------------
+# COMPILAÇÃO
+# ----------------------------------------------------------------------------------------------------------------------
+# Possíveis variáveis:
+#   $project_compile
+#   $project_format [ padrão = 'pdf' ]
+#   $project_output
+# ----------------------------------------------------------------------------------------------------------------------
 
-    if [ ! -z "$2" ] && [ -d "${2}" ] && [ -d "${2}/libraries" ] && [ -f "${2}/project.tex" ]; then
+if [ "$project_compile" != "none" ]; then
 
-        # O projeto está em um diretório especificado
-        first_char="${2:0:1}";
+    if [ -d "${project_compile}" ] && [ -d "${project_compile}/libraries" ] && [ -f "${project_compile}/project.tex" ]; then
+
+        # O projeto está em um diretório especificado no parâmetro
+        first_char="${project_compile:0:1}";
 
         if [ "/" = "$first_char" ]; then
             # Caminho absoluto:
             # /home/ricardo/projeto
-            project_dir=$2;
+            project_dir=$project_compile;
 
         elif [ "/" != "$first_char" ] && [ "." != "$first_char" ]; then
             # Caminho relativo
             # projeto
-            project_dir=$curr_dir/$2;
+            project_dir=$curr_dir/$project_compile;
 
         elif [ "." = "$first_char" ]; then
             # Caminho relativo
             # ./projeto
-            project_dir=$curr_dir/${2:2};
+            project_dir=$curr_dir/${project_compile:2};
 
-        else
-            project_dir=$2;
         fi
 
-    elif [ -z "$2" ] && [ -d "${curr_dir}/libraries" ] && [ -f "${curr_dir}/project.tex" ]; then
+    elif [ -z "$project_compile" ] && [ -d "${curr_dir}/libraries" ] && [ -f "${curr_dir}/project.tex" ]; then
 
         # O projeto está no diretório atual
+        # usuário entrou no diretório do projeto e rodou o compilador
         project_dir=$curr_dir;
 
     else
@@ -200,10 +351,12 @@ if [ "$1" = "-c" ] || [ "$1" = "--compile" ]; then
         echo "Não foi encontrado um projeto válido para compilar.";
         echo "Entre em um projeto válido ou especifique o caminho até ele";
         echo "Por exemplo:";
-        echo "  cd /caminho/do/meu-projeto; speed-latex $1";
+        echo "  cd /caminho/do/meu-projeto; speed-latex -c";
+        echo "  cd /caminho/do/meu-projeto; speed-latex --compile";
         echo "  ou";
-        echo "  speed-latex $1 /caminho/do/meu-projeto";
-        exit 1;
+        echo "  speed-latex -c /caminho/do/meu-projeto";
+        echo "  speed-latex --compile /caminho/do/meu-projeto";
+        exit 1; #erro
 
     fi
 
@@ -214,19 +367,26 @@ if [ "$1" = "-c" ] || [ "$1" = "--compile" ]; then
 
     # entra no diretório do projeto
     cd $project_dir;
+
+    # compila o projeto
     latexmk -pdf -halt-on-error project.tex | grep '^!.*' -A200 --color=always;
+
+    # limpa os arquivos temporários
+    # latexmk -c
+
+    # volta para o diretório original
     if [ "$project_dir" != "$curr_dir" ]; then
         # volta para o diretório original
         cd -;
     fi
 
-    if [ -z "$3" ] && [ -z "$4" ]; then
+    if [ "$project_output" != "none" ]; then
 
-        if [ "-o" = "$3" ] || [ "--output" = "$3" ]; then
-
-            cp $project_dir/project.pdf $4;
-
+        if [ -d "$project_output" ]; then
+            project_output="$project_output/project.pdf"
         fi
+
+        cp $project_dir/project.pdf $project_output;
 
     fi
 
@@ -278,4 +438,11 @@ if [ "$1" = "-c" ] || [ "$1" = "--compile" ]; then
     rm $project_dir/*.xdy 2> /dev/null;
     rm $project_dir/*.tdo 2> /dev/null;
 
+    exit 0; #ok
+
 fi
+
+# nenhuma operação executada!
+echo "Parâmetros inválidos!";
+echo $SCRIPT_USE;
+exit 1; #erro
