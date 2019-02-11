@@ -1,24 +1,34 @@
 #!/bin/bash
 #
-# ./makedoc.sh
+# ./make.sh
 #
 # Autor: Ricardo Pereira <rpdesignerfly@gmail.com>
 # Site: https://github.com/rpdesignerfly/engenharia-de-software
 #
 #---------------------------------------------------------------------------------------------------
-# Este programa efetua a compilação do documento latex.
+# Este programa gerencia projetos latex.
 #---------------------------------------------------------------------------------------------------
 
 libs_dir="/usr/share/speed-latex";
 work_dir="$HOME/.speed-latex/temp";
 curr_dir="$PWD";
 
+# determina se o programa está sendo executado em desenvolvimento
+devel_mode='no';
+if [ -f "$curr_dir/make.sh" ]; then
+    devel_mode='yes';
+fi
+
+# cria o diretório temporário para testes
+if [ ! -d "$curr_dir/tests/temp" ] && [ "$devel_mode" = "yes" ]; then
+    mkdir -p $curr_dir/tests/temp;
+fi
+
 # cria o diretório de trabalho do usuário
 # se ele não existir
 if [ ! -d $work_dir ]; then
     mkdir -p $work_dir;
 fi
-
 
 SCRIPT_USE=$'Mode de Usar: speed-latex <comando> <projeto|file.tex> [parâmetros]
 Use speed-latex --help para mais informações';
@@ -67,7 +77,7 @@ done;
 # cria um novo projeto latex
 if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
 
-    if [ -z "$2" ]; then
+    if [ -z "$2" ] && [ "$devel_mode" = 'no' ]; then
 
         # Parametro invalido
         echo "É obrigatório especificar o nome do projeto";
@@ -76,7 +86,11 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
 
     fi
 
-    project_dir=$curr_dir/$2;
+    if [ "$devel_mode" = 'yes' ]; then
+        project_dir=$curr_dir/tests/temp/$2;
+    else
+        project_dir=$curr_dir/$2;
+    fi
 
     # cria o diretório do projeto
     if [ -d "${project_dir}" ] && [ -d "${project_dir}/libraries" ]; then
