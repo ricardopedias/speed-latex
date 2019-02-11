@@ -386,7 +386,7 @@ if [ "$project_compile" != "none" ]; then
             project_output="$project_output/project.pdf"
         fi
 
-        cp $project_dir/project.pdf $project_output;
+        mv $project_dir/project.pdf $project_output;
 
     fi
 
