@@ -86,6 +86,12 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
 
     fi
 
+    # valida o nome especificado para o projeto
+    if [[ $2 == *"/"* ]]; then
+        echo "O nome especificado para o projeto é inválido!";
+        exit;
+    fi
+
     if [ "$devel_mode" = 'yes' ]; then
         project_dir=$curr_dir/tests/temp/$2;
     else
@@ -113,7 +119,7 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
     # cria o documento do projeto
     case $document_type in
         article)
-            echo "Criando um projeto de artigo";
+            echo "Criando um projeto de artigo em $project_dir";
             cp /usr/share/speed-latex/templates/article/class-article.cls $project_dir/libraries/class-article.cls;
             cp /usr/share/speed-latex/templates/article/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/article/example.tex $project_dir/contents/example.tex;
@@ -121,7 +127,7 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
         ;;
 
         book)
-            echo "Criando um projeto de livro";
+            echo "Criando um projeto de livro em $project_dir";
             cp /usr/share/speed-latex/templates/book/class-book.cls $project_dir/libraries/class-book.cls;
             cp /usr/share/speed-latex/templates/book/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/book/example.tex $project_dir/contents/example.tex;
@@ -129,7 +135,7 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
         ;;
 
         letter)
-            echo "Criando um projeto de carta";
+            echo "Criando um projeto de carta em $project_dir";
             cp /usr/share/speed-latex/templates/letter/class-letter.cls $project_dir/libraries/class-letter.cls;
             cp /usr/share/speed-latex/templates/letter/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/letter/example.tex $project_dir/contents/example.tex;
@@ -137,7 +143,7 @@ if [ "$1" = "-p" ] || [ "$1" = "--project" ]; then
         ;;
 
         report)
-            echo "Criando um projeto de relatório";
+            echo "Criando um projeto de relatório em $project_dir";
             cp /usr/share/speed-latex/templates/report/class-report.cls $project_dir/libraries/class-report.cls;
             cp /usr/share/speed-latex/templates/report/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/report/example.tex $project_dir/contents/example.tex;
