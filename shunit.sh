@@ -21,12 +21,15 @@ sudo ./install.sh > /dev/null;
 root_path="$PWD";
 tests_list=$(ls tests/*.sh);
 
-
 echo "==========================================================";
 echo "Executando testes de unidade";
 echo "----------------------------------------------------------";
 
 for test in "${tests_list}"; do
+
+    if [ "$test" = "test-lib.sh" ]; then
+        continue;
+    fi
 
     # reseta a localização
     cd $root_path;
@@ -36,7 +39,7 @@ for test in "${tests_list}"; do
     touch tests/temp/output.txt;
 
     # executa o teste
-    result_text=$(./$test "$root_path" "$test_path");
+    result_text=$(./$test);
     result_sign="$?";
 
     if [ "$result_sign" = "1" ]; then

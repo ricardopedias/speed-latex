@@ -9,6 +9,9 @@
 # Este programa executa a re-instalação antes de executar o comando
 #---------------------------------------------------------------------------------------------------
 
+# inclui a biblioteca com as ferramentas de teste
+. ./tests/test-lib.sh
+
 # nome do teste
 echo "Teste de criação e compilação de livros";
 
@@ -21,8 +24,12 @@ echo "Teste de criação e compilação de livros";
 } > tests/temp/output.txt 2> tests/temp/output.txt
 
 # rotina de asserção
-if [ -f 'tests/temp/test-book/project.pdf' ]; then
-    exit 0;
-fi
+assert_file_not_exists 'tests/temp/test-book/project.pdf';
+
+
+# if [ -f 'tests/temp/test-book/project.pdf' ]; then
+#     exit 1;
+# fi
+#
 
 exit 0;
