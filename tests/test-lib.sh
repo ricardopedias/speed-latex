@@ -11,16 +11,16 @@
 
 function assert_file_exists()
 {
-    if [ -f "$1" ]; then
-        exit 1;
+    if [ ! -f "$1" ]; then
+        exit 0; # falhou
     fi
 
 }
 
 function assert_file_not_exists()
 {
-    if [ ! -f "$1" ]; then
-        exit 1;
+    if [ -f "$1" ]; then
+        exit 0; # falhou
     fi
 
 }

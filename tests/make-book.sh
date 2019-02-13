@@ -24,12 +24,6 @@ echo "Teste de criação e compilação de livros";
 } > tests/temp/output.txt 2> tests/temp/output.txt
 
 # rotina de asserção
-assert_file_not_exists 'tests/temp/test-book/project.pdf';
+assert_file_exists 'tests/temp/test-book/project.pdf';
 
-
-# if [ -f 'tests/temp/test-book/project.pdf' ]; then
-#     exit 1;
-# fi
-#
-
-exit 0;
+exit 1; # ok, todos os testes funcionaram
