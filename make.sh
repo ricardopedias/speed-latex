@@ -377,7 +377,7 @@ if [ "$project_compile" != "none" ]; then
     # volta para o diretório original
     if [ "$project_dir" != "$curr_dir" ]; then
         # volta para o diretório original
-        cd -;
+        cd - > /dev/null;
     fi
 
     if [ "$project_output" != "none" ]; then
