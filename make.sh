@@ -199,8 +199,8 @@ if [ -f "$curr_dir/make.sh" ]; then
     fi
 
     # re-instala sempre as bibliotecas
-    sudo ./uninstall.sh
-    sudo ./install.sh
+    # sudo ./uninstall.sh
+    # sudo ./install.sh
 
 fi
 
