@@ -26,7 +26,7 @@
 % Macro para dvi e pdf
 %--------------------------------------------------------------------------------
 \usepackage[pdftex]{graphicx}
-%\usepackage[pdftex,pdfstartview=FitH,plainpages=true,colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage[pdftex,pdfstartview=FitH,plainpages=true,colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
 \usepackage[pdftex,pdfstartview=FitH,plainpages=true]{hyperref}
 \hypersetup{colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
 
@@ -35,27 +35,27 @@
 % extensões que não serão necessárias especificar em toda instancia de \includegraphics
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 
-%\newif\ifpdf
-%\ifx\pdfoutput\undefined
+% \newif\ifpdf
+% \ifx\pdfoutput\undefined
 %   \pdffalse
-%\else
+% \else
 %   \pdfoutput=1
 %   \pdftrue
-%\fi \ifpdf
+% \fi \ifpdf
 %  \usepackage[pdftex]{graphicx}
 %  \usepackage[pdftex,plainpages=true,colorlinks=true,
 %              urlcolor=blue,
 %              pdfstartview=FitH,
 %              citecolor=blue,
 %  ]{hyperref}
-%\else
-%\usepackage{graphicx}
-%\usepackage[dvipdfm,colorlinks=true,
+% \else
+% \usepackage{graphicx}
+% \usepackage[dvipdfm,colorlinks=true,
 %              urlcolor=blue,
 %              pdfstartview=FitH,
 %              citecolor=blue,
 %  ]{hyperref}
-%\fi
+% \fi
 
 %\ifCLASSINFOpdf
 %  \usepackage[pdftex]{graphicx}
@@ -104,65 +104,65 @@
 %================================================================================
 % Definindo e customizando a página inicial
 %--------------------------------------------------------------------------------
-\newcommand{\titulo}[1]
-{
-	\begin{center}
-		\begin{minipage}[t]{10cm}
-			\begin{center}
-				{{\Large #1}}
-			\end{center}
-		\end{minipage}
-	\end{center}
-}
+% \newcommand{\titulo}[1]
+% {
+% 	\begin{center}
+% 		\begin{minipage}[t]{10cm}
+% 			\begin{center}
+% 				{{\Large #1}}
+% 			\end{center}
+% 		\end{minipage}
+% 	\end{center}
+% }
 
-\newcommand{\autor}[1]
-{
-	\relax\vskip 0.2cm\noindent
-	\begin{center}
-		\begin{minipage}[t]{10cm}
-			\begin{center}
-				{{\large #1}}
-			\end{center}
-		\end{minipage}
-	\end{center}
-}
-
-\newcommand{\doctipo}[1]
-{
-	\relax\vskip 0.2cm\noindent
-	\begin{center}
-		\begin{minipage}[t]{10cm}
-			\begin{center}
-				{{#1}} %\quad {(#2)}
-			\end{center}
-		\end{minipage}
-	\end{center}
-}
-
-\newcommand{\orientacao}[1]
-{
-	\vskip 2cm\noindent
-	\begin{center}
-		{Orienta\c{c}\~ao: #1}
-	\end{center}
-}
-
-\newcommand{\docarea}[1]
-{
-	\vskip 0.2cm\noindent
-	\begin{center}
-		{\'{A}rea de Concentra\c{c}\~ao: #1}
-	\end{center}
-}
-
-\newcommand{\textofree}[1]
-{
-	%\vskip 1cm
-	\noindent
-	\begin{center}
-		{#1}
-	\end{center}
-}
+% \newcommand{\autor}[1]
+% {
+% 	\relax\vskip 0.2cm\noindent
+% 	\begin{center}
+% 		\begin{minipage}[t]{10cm}
+% 			\begin{center}
+% 				{{\large #1}}
+% 			\end{center}
+% 		\end{minipage}
+% 	\end{center}
+% }
+%
+% \newcommand{\doctipo}[1]
+% {
+% 	\relax\vskip 0.2cm\noindent
+% 	\begin{center}
+% 		\begin{minipage}[t]{10cm}
+% 			\begin{center}
+% 				{{#1}} %\quad {(#2)}
+% 			\end{center}
+% 		\end{minipage}
+% 	\end{center}
+% }
+%
+% \newcommand{\orientacao}[1]
+% {
+% 	\vskip 2cm\noindent
+% 	\begin{center}
+% 		{Orienta\c{c}\~ao: #1}
+% 	\end{center}
+% }
+%
+% \newcommand{\docarea}[1]
+% {
+% 	\vskip 0.2cm\noindent
+% 	\begin{center}
+% 		{\'{A}rea de Concentra\c{c}\~ao: #1}
+% 	\end{center}
+% }
+%
+% \newcommand{\textofree}[1]
+% {
+% 	%\vskip 1cm
+% 	\noindent
+% 	\begin{center}
+% 		{#1}
+% 	\end{center}
+% }
 %==================== Fim da customização da página inicial =====================
 
 \setcounter{tocdepth}{2}% estabelece a "profundidade dos bookmarks".
