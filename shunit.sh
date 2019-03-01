@@ -35,6 +35,10 @@ for test in "${tests_list}"; do
     cd $root_path;
     # rm -Rf tests/temp/*
 
+    if [ ! -d tests/temp ]; then
+        mkdir -p tests/temp;
+    fi
+
     # cria o arquivo de saida
     touch tests/temp/output.txt;
 
