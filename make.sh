@@ -369,7 +369,7 @@ if [ "$project_compile" != "none" ]; then
     cd $project_dir;
 
     # compila o projeto
-    latexmk -pdf -halt-on-error project.tex | grep '^!.*' -A200 --color=always;
+    latexmk -gg -pdf -halt-on-error project.tex | grep '^!.*' -A200 --color=always;
 
     # limpa os arquivos temporários
     # latexmk -c
