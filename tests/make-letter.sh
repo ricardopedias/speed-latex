@@ -13,18 +13,18 @@
 . ./tests/test-lib.sh
 
 # nome do teste
-echo "Teste de criação e compilação de livros";
+echo "Teste de criação e compilação de cartas";
 
 # rotina de execução
 {
 
-    ./make.sh -p test-book --type="article"; # cria um novo projeto latex
-    ./make.sh -c tests/temp/test-book; # compila o projeto
-    cp tests/temp/test-book/project.pdf tests/project.pdf;
+    ./make.sh -p test-letter --type="letter"; # cria um novo projeto latex
+    ./make.sh -c tests/temp/test-letter; # compila o projeto
+    cp tests/temp/test-letter/project.pdf tests/project.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 
 # rotina de asserção
-assert_file_exists 'tests/temp/test-book/project.pdf';
+assert_file_exists 'tests/temp/test-letter/project.pdf';
 
 exit 1; # ok, todos os testes funcionaram

@@ -13,14 +13,14 @@
 . ./tests/test-lib.sh
 
 # nome do teste
-echo "Teste de criação e compilação de livros";
+echo "Teste de criação e compilação de relatórios";
 
 # rotina de execução
 {
 
-    ./make.sh -p test-book --type="article"; # cria um novo projeto latex
-    ./make.sh -c tests/temp/test-book; # compila o projeto
-    cp tests/temp/test-book/project.pdf tests/project.pdf;
+    ./make.sh -p test-report --type="report"; # cria um novo projeto latex
+    ./make.sh -c tests/temp/test-report; # compila o projeto
+    cp tests/temp/test-report/project.pdf tests/project.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 
