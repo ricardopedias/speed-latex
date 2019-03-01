@@ -19,21 +19,25 @@ sudo ./uninstall.sh > /dev/null;
 sudo ./install.sh > /dev/null;
 
 root_path="$PWD";
-tests_list=$(ls tests/*.sh);
+# tests_list=$(ls tests/*.sh);
+tests_list=$(echo "
+    tests/make-article.sh
+    
+");
 
 echo "==========================================================";
 echo "Executando testes de unidade";
 echo "----------------------------------------------------------";
 
-for test in "${tests_list}"; do
+for test in $tests_list; do
 
-    if [ "$test" = "test-lib.sh" ]; then
+    if [ "$test" = "tests/test-lib.sh" ]; then
         continue;
     fi
 
     # reseta a localização
     cd $root_path;
-    # rm -Rf tests/temp/*
+    rm -Rf tests/temp/*
 
     if [ ! -d tests/temp ]; then
         mkdir -p tests/temp;
@@ -46,7 +50,7 @@ for test in "${tests_list}"; do
     result_text=$(./$test);
     result_sign="$?";
 
-    if [ "$result_sign" = "1" ]; then
+    if [ "$result_sign" = "0" ]; then
         echo -e "${GREEN}[Ok] $result_text${NORMAL}";
     else
         echo -e "${RED}[Fail] $result_text${NORMAL}";
