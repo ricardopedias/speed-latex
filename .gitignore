@@ -4,8 +4,10 @@
 /project/*.glo
 /project/*.ist
 /project/*.log
+/project/*.toc
 
 /project/libraries/*.aux
+/project/libraries/assets/*converted-to*
 /project/templates/article/*.aux
 /project/templates/book/*.aux
 /project/templates/letter/*.aux
