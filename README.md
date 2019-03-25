@@ -24,7 +24,7 @@ Sinta-se à vontade para conferir os [releases](https://github.com/ricardopdias/
 
 1. [Sobre](docs/01-About.md)
     * [O Speed Latex](docs/01-About.md#11-sobre-o-speed-latex)
-    * [O versionamento](docs/01-About.md#12-o versionamento)
+    * [O versionamento](docs/01-About.md#12-o-versionamento)
 2. [Instalação](docs/02-Installation.md)
     * [Pré Requisitos](docs/02-Installation.md#21-requisitos)
     * [Instalando](docs/02-Installation.md#23-instalando)
