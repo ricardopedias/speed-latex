@@ -1,3 +1,16 @@
+/project/*.aux
+/project/*.fdb_latexmk
+/project/*.fls
+/project/*.glo
+/project/*.ist
+/project/*.log
+
+/project/libraries/*.aux
+/project/templates/article/*.aux
+/project/templates/book/*.aux
+/project/templates/letter/*.aux
+/project/templates/report/*.aux
+
 /tests/temp
 /tests/article.pdf
 /tests/book.pdf
