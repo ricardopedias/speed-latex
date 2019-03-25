@@ -1,7 +1,7 @@
-![SpeedLatex](docs/imgs/logo.svg?raw=true)
+![SpeedLatex](docs/imgs/logo.svg)
 
-![Latex](https://img.shields.io/badge/Linguagem Principal-Latex-green.svg?style=for-the-badge)
-![Shellscript](https://img.shields.io/badge/Linguagem do Helper-ShellScript-red.svg?style=for-the-badge)
+![Latex](https://img.shields.io/badge/Linguagem%20Principal-Latex-green.svg?style=for-the-badge)
+![Shellscript](https://img.shields.io/badge/Linguagem%20do%20Helper-ShellScript-red.svg?style=for-the-badge)
 
 *By [Ricardo Pereira Dias &copy;](https://www.ricardopdias.com.br)*
 
@@ -14,7 +14,7 @@ Sinta-se à vontade para conferir os [releases](https://github.com/ricardopdias/
 
   * Codificado com boas práticas e máxima qualidade;
   * Código feito para possibilitar o uso direto (usando somente Latex);
-  * Inclui script para criaçaõ e compilaçãod e projetos;
+  * Inclui script para criação e compilação de projetos;
   * Bem documentado e amigável para IDEs;
   * Feito com TDD (Test Driven Development);
   * Implementado com testes de unidade;
