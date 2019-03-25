@@ -189,7 +189,7 @@ done;
 # ----------------------------------------------------------------------------------------------------------------------
 
 # determina se o programa está sendo executado em modo de desenvolvimento
-if [ -f "$curr_dir/make.sh" ]; then
+if [ -f "$curr_dir/speedlatex.sh" ]; then
 
     test_mode='yes';
 
@@ -241,71 +241,46 @@ if [ "$project_create" != "none" ]; then
     # cria o diretório do novo projeto
     mkdir $project_dir;
 
-    # cria as bibliotecas
-    mkdir -p $project_dir/libraries;
-    cp /usr/share/speed-latex/libraries/document-fonts-free.tex $project_dir/libraries/document-fonts-free.tex;
-    cp /usr/share/speed-latex/libraries/document-fonts-non-free.tex $project_dir/libraries/document-fonts-non-free.tex;
+    # cria a localização dos assets
+    mkdir -p $project_dir/assets;
+    sudo cp -rf $libs_dir/project/assets $project_dir
 
-    # cria o conteúdo
-    mkdir -p $project_dir/contents;
+    # cria a localização das bibliotecas
+    mkdir -p $project_dir/libraries;
+    sudo cp -rf $libs_dir/project/libraries $project_dir
+
+    # cria a localização dos templates
+    mkdir -p $project_dir/templates;
+    sudo cp -rf $libs_dir/project/templates $project_dir
 
     # cria o documento do projeto
     case $project_type in
         article)
 
             echo "Criando um projeto de artigo em $project_dir";
+            cp $libs_dir/project/article.tex $project_dir/project.tex;
 
-            cp /usr/share/speed-latex/libraries/document-packages-article.tex $project_dir/libraries/document-packages-article.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-sections.tex $project_dir/libraries/document-functions-sections.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
-
-            cp /usr/share/speed-latex/templates/article/class-article.cls $project_dir/libraries/class-article.cls;
-            cp /usr/share/speed-latex/templates/article/project.tex $project_dir/project.tex;
-            cp /usr/share/speed-latex/templates/article/example.tex $project_dir/contents/example.tex;
-            cp /usr/share/speed-latex/templates/article/cover-simple.tex $project_dir/contents/cover-simple.tex;
         ;;
 
         book)
 
             echo "Criando um projeto de livro em $project_dir";
+            cp $libs_dir/project/book.tex $project_dir/project.tex;
 
-            cp /usr/share/speed-latex/libraries/document-packages-book.tex $project_dir/libraries/document-packages-book.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-addsections.tex $project_dir/libraries/document-functions-addsections.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-sections.tex $project_dir/libraries/document-functions-sections.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
-
-            cp /usr/share/speed-latex/templates/book/class-book.cls $project_dir/libraries/class-book.cls;
-            cp /usr/share/speed-latex/templates/book/project.tex $project_dir/project.tex;
-            cp /usr/share/speed-latex/templates/book/example.tex $project_dir/contents/example.tex;
-            cp /usr/share/speed-latex/templates/book/cover-simple.tex $project_dir/contents/cover-simple.tex;
         ;;
 
         letter)
 
             echo "Criando um projeto de carta em $project_dir";
+            cp $libs_dir/project/letter.tex $project_dir/project.tex;
 
-            cp /usr/share/speed-latex/libraries/document-packages-letter.tex $project_dir/libraries/document-packages-letter.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
-
-            cp /usr/share/speed-latex/templates/letter/class-letter.cls $project_dir/libraries/class-letter.cls;
-            cp /usr/share/speed-latex/templates/letter/project.tex $project_dir/project.tex;
-            cp /usr/share/speed-latex/templates/letter/example.tex $project_dir/contents/example.tex;
-            cp /usr/share/speed-latex/templates/letter/cover-simple.tex $project_dir/contents/cover-simple.tex;
         ;;
 
         report)
 
             echo "Criando um projeto de relatório em $project_dir";
+            cp $libs_dir/project/report.tex $project_dir/project.tex;
 
-            cp /usr/share/speed-latex/libraries/document-packages-report.tex $project_dir/libraries/document-packages-report.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-addsections.tex $project_dir/libraries/document-functions-addsections.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-sections.tex $project_dir/libraries/document-functions-sections.tex;
-            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
-
-            cp /usr/share/speed-latex/templates/report/class-report.cls $project_dir/libraries/class-report.cls;
-            cp /usr/share/speed-latex/templates/report/project.tex $project_dir/project.tex;
-            cp /usr/share/speed-latex/templates/report/example.tex $project_dir/contents/example.tex;
-            cp /usr/share/speed-latex/templates/report/cover-simple.tex $project_dir/contents/cover-simple.tex;
         ;;
 
         *)
@@ -316,14 +291,14 @@ if [ "$project_create" != "none" ]; then
     esac
 
     # cria as variáveis
-    cp /usr/share/speed-latex/libraries/variables.tex $project_dir/variables.tex;
+    cp $libs_dir/project/variables.tex $project_dir/variables.tex;
 
     # cria o diretório de assets
     mkdir -p $project_dir/assets;
 
     # copia o logotipo de exemplo
-    cp /usr/share/speed-latex/libraries/assets/logo.eps $project_dir/assets/logo.eps;
-    cp /usr/share/speed-latex/libraries/assets/readme.txt $project_dir/assets/readme.txt;
+    cp $libs_dir/project/assets/logo.eps $project_dir/assets/logo.eps;
+    cp $libs_dir/project/assets/readme.txt $project_dir/assets/readme.txt;
 
     exit 0; #ok
 
@@ -415,8 +390,14 @@ if [ "$project_compile" != "none" ]; then
 
     # Limpa os diretórios de gráficos
     rm $project_dir/assets/*converted-to.pdf 2> /dev/null;
+
     # Limpa o diretório da biblioteca
     rm $project_dir/libraries/*.aux 2> /dev/null;
+    rm $project_dir/templates/article/*.aux 2> /dev/null;
+    rm $project_dir/templates/book/*.aux 2> /dev/null;
+    rm $project_dir/templates/letter/*.aux 2> /dev/null;
+    rm $project_dir/templates/report/*.aux 2> /dev/null;
+
     # Limpa o diretório do projeto
     rm $project_dir/*_.pdf 2> /dev/null;
     rm $project_dir/*.acn 2> /dev/null;

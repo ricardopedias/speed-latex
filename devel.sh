@@ -11,4 +11,4 @@
 
 ./uninstall.sh;
 ./install.sh;
-speed-latex "$@";
+speedlatex "$@";

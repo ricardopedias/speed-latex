@@ -28,17 +28,17 @@ echo "------------------------------------------------------------------------";
 if [ -d "/usr/share/speed-latex" ]; then
     # remove instalações anteriores
     sudo rm -Rf /usr/share/speed-latex
-    sudo unlink /usr/bin/speed-latex
+    sudo unlink /usr/bin/speedlatex
 fi
 sudo cp -rf $root_dir /usr/share/speed-latex
 #sudo chmod 777 -Rf /usr/share/speed-latex/*
 
 # cria o executável global
-if [ ! -h "/usr/bin/speed-latex" ]; then
+if [ ! -h "/usr/bin/speedlatex" ]; then
     echo "------------------------------------------------------------------------";
     echo "Configurando o executável";
     echo "------------------------------------------------------------------------";
-    sudo ln -s /usr/share/speed-latex/make.sh /usr/bin/speed-latex
+    sudo ln -s /usr/share/speed-latex/speedlatex.sh /usr/bin/speedlatex
 fi
 
 echo "Pronto! Speed Latex instalado";

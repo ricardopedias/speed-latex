@@ -6,8 +6,9 @@
 /project/*.log
 /project/*.toc
 
+/project/assets/*converted-to*
+
 /project/libraries/*.aux
-/project/libraries/assets/*converted-to*
 /project/templates/article/*.aux
 /project/templates/book/*.aux
 /project/templates/letter/*.aux
