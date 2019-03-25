@@ -9,12 +9,12 @@
 # Este programa efetua a remoção do speed-latex do sistema
 #
 
-if [ -h "/usr/bin/speed-latex" ] || [ -d "/usr/share/speed-latex" ]; then
+if [ -h "/usr/bin/speedlatex" ] || [ -d "/usr/share/speed-latex" ]; then
 
     # remove o link
-    if [ -h "/usr/bin/speed-latex" ]; then
+    if [ -h "/usr/bin/speedlatex" ]; then
         echo "Removendo o executável";
-        sudo unlink /usr/bin/speed-latex
+        sudo unlink /usr/bin/speedlatex
     fi
 
     if [ -d "/usr/share/speed-latex" ]; then
