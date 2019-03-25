@@ -18,9 +18,9 @@ echo "Teste de criação e compilação de artigos";
 # rotina de execução
 {
 
-    ./make.sh -p test-article --type="article"; # cria um novo projeto latex
-    ./make.sh -c tests/temp/test-article; # compila o projeto
-    cp tests/temp/test-article/project.pdf tests/article.pdf;
+    ./speedlatex.sh -p test-article --type="article"; # cria um novo projeto latex
+    ./speedlatex.sh -c tests/temp/test-article; # compila o projeto
+    cp tests/temp/test-article/project.pdf project/article.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 

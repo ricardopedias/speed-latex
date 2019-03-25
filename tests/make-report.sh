@@ -18,9 +18,9 @@ echo "Teste de criação e compilação de relatórios";
 # rotina de execução
 {
 
-    ./make.sh -p test-report --type="report"; # cria um novo projeto latex
-    ./make.sh -c tests/temp/test-report; # compila o projeto
-    cp tests/temp/test-report/project.pdf tests/report.pdf;
+    ./speedlatex.sh -p test-report --type="report"; # cria um novo projeto latex
+    ./speedlatex.sh -c tests/temp/test-report; # compila o projeto
+    cp tests/temp/test-report/project.pdf project/report.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 
