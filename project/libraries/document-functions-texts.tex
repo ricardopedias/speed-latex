@@ -9,34 +9,6 @@
 % Este arquivo contém as funções personalizadas para facilitar a criação de documentos
 %===================================================================================================
 
-% Função para criar o capítulo
-\newcommand{\docChapter}[1] {
-    \chapter{
-        \textcolor{chapter_text}{ #1 }
-    }
-}
-
-% Função para criar seção de nivel 1
-\newcommand{\docSection}[1] {
-    \section{
-        \textcolor{section_text}{ #1 }
-    }
-}
-
-% Função para criar seção de nivel 2
-\newcommand{\docSubSection}[1] {
-    \subsection{
-        \textcolor{subsection_text}{ #1 }
-    }
-}
-
-% Função para criar seção de nivel 3
-\newcommand{\docSubSubSection}[1] {
-    \subsubsection{
-        \textcolor{subsubsection_text}{ #1 }
-    }
-}
-
 % Função para criar corpo de texto
 \newcommand{\docBodyText}[1] {
     {\leavevmode\color{body_text}#1}
@@ -158,71 +130,3 @@
     {\color{success_text}\xout{#1}}
     \ignorespaces
 }
-
-% \newcommand{\reduline}[1]{{\color{red}\uline{{\color{black}#1}}}}
-
-
-
-
-
-
-
-% \newcommand{\titulo}[1]
-% {
-%     \begin{center}
-%         \begin{minipage}[t]{10cm}
-%             \begin{center}
-%                 {{\Large #1}}
-%             \end{center}
-%         \end{minipage}
-%     \end{center}
-% }
-
-% \newcommand{\autor}[1]
-% {
-%     \relax\vskip 0.2cm\noindent
-%     \begin{center}
-%         \begin{minipage}[t]{10cm}
-%             \begin{center}
-%                 {{\large #1}}
-%             \end{center}
-%         \end{minipage}
-%     \end{center}
-% }
-
-% \newcommand{\doctipo}[1]
-% {
-%     \relax\vskip 0.2cm\noindent
-%     \begin{center}
-%         \begin{minipage}[t]{10cm}
-%             \begin{center}
-%                 {{#1}} %\quad {(#2)}
-%             \end{center}
-%         \end{minipage}
-%     \end{center}
-% }
-
-% \newcommand{\orientacao}[1]
-% {
-%     \vskip 2cm\noindent
-%     \begin{center}
-%         {Orienta\c{c}\~ao: #1}
-%     \end{center}
-% }
-
-% \newcommand{\docarea}[1]
-% {
-%     \vskip 0.2cm\noindent
-%     \begin{center}
-%         {\'{A}rea de Concentra\c{c}\~ao: #1}
-%     \end{center}
-% }
-
-% \newcommand{\textofree}[1]
-% {
-%     %\vskip 1cm
-%     \noindent
-%     \begin{center}
-%         {#1}
-%     \end{center}
-% }

@@ -20,7 +20,7 @@ echo "Teste de criação e compilação de cartas";
 
     ./make.sh -p test-letter --type="letter"; # cria um novo projeto latex
     ./make.sh -c tests/temp/test-letter; # compila o projeto
-    cp tests/temp/test-letter/project.pdf tests/project.pdf;
+    cp tests/temp/test-letter/project.pdf tests/letter.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 

@@ -1,0 +1,36 @@
+%===================================================================================================
+% Autor             : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+% Data de criação   : 29 de Janeiro de 2019
+% Referencias       : https://pt.overleaf.com/learn
+%                     https://texblog.org/code-snippets/beamer-presentation/
+%===================================================================================================
+
+% tamanho do papel,
+% organização das páginas,
+% tamanho padrão da fonte,
+% idioma do latex
+\documentclass[a4paper,twoside,12pt,portuges]{libraries/class-letter}
+
+% Pacotes configurados para utilização
+\include{libraries/document-packages-letter}
+
+% Funções personalizadas
+\include{libraries/document-functions-texts}
+
+% Informações pré-definidas
+\include{variables}
+
+% Fontes que acompanham o texlive
+\include{libraries/document-fonts-free}
+
+\begin{document}
+
+    % Definições básicas
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+    \pagestyle{fancy}
+
+    \include{templates/letter/example}
+
+
+\end{document}

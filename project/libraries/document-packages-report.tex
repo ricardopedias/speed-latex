@@ -1,0 +1,78 @@
+%====================================================================================================
+%----------------------------------------------------------------------------------------------------
+% Autor              : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+%----------------------------------------------------------------------------------------------------
+% Data de criação    : 29 de Janeiro de 2019
+%====================================================================================================
+
+%\usepackage[top=30mm,bottom=25mm,left=25mm,right=20mm]{geometry}
+%Margens
+
+\usepackage{lipsum} % para preencher com textos padrões
+\usepackage[top=3cm, bottom=2cm, left=3cm, right=2cm]{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage[brazil]{babel}
+\usepackage[font=small]{caption}
+\usepackage{multicol}
+\usepackage{booktabs}     % http://ctan.org/pkg/booktabs
+\usepackage{array}        % http://ctan.org/pkg/array
+\newcolumntype{M}{>{\centering\arraybackslash}m{\dimexpr.25\linewidth-2\tabcolsep}}
+
+
+%Pacote de edição de arquivos PDF e de imagem
+\usepackage{tikz}
+
+%Configurações Lista de Siglas e Abreviações
+\usepackage[nopostdot,style=super,nonumberlist,toc]{glossaries}
+\newglossarystyle{modsuper}{
+    \glossarystyle{super}
+    \renewcommand{\glsgroupskip}{}
+}
+\makeglossaries
+
+%Pacote para Indetação dos parágrafos iniciais
+\usepackage{indentfirst}
+
+%Pacote para alterar espaçamento entre linhas
+\usepackage{setspace}
+%\singlespacing Para um espaçamento simples
+%\onehalfspacing Para um espaçamento de 1,5
+%\doublespacing Para um espaçamento duplo
+
+%Pacote para alterar espaçamento entre linhas específicas
+\usepackage{leading}
+%\leading{15pt}
+
+\usepackage{bookmark}
+%\usepackage[bookmarks=true]{hyperref}
+
+% para hackear a linha de cabeçalhos e rodapés
+\usepackage{xpatch}
+
+%\usepackage[]{hyperref}
+%\hypersetup{
+%    pdftitle={Your title here},
+%    pdfauthor={Your name here},
+%    pdfsubject={Your subject here},
+%    pdfkeywords={keyword1, keyword2},
+%    bookmarksnumbered=true,
+%    bookmarksopen=true,
+%    bookmarksopenlevel=1,
+%    colorlinks=true,
+%    pdfstartview=Fit,
+%    pdfpagemode=UseOutlines,    % this is the option you were lookin for
+%    pdfpagelayout=TwoPageRight
+%}
+
+%Pacote de Numeração sequencial para figuras, tabelas e quadros
+\usepackage{chngcntr}
+
+%Pacote para configurar cores
+\usepackage{xcolor}
+
+%Pacote para configurar espaçamento de títulos
+\usepackage{titlesec}
+
+\usepackage{ulem} % para riscar textos

@@ -12,22 +12,24 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 
-% Carrega a classe de formatação para o tipo 'article'.
+% Carrega a classe de formatação.
 \LoadClass[a4paper,12pt]{article}[2000/05/19 v1.4b Standard LaTeX document class]
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[portuguese,brazil]{babel}
 \RequirePackage{amsmath,amssymb,amsfonts,float,fancyhdr}
 
 % --------------------------------------------------------------------------------------------------
-% LAYOUT DA PAGINA
+% LAYOUT
 % --------------------------------------------------------------------------------------------------
 
-\setlength{\topmargin}{-7mm}
-\setlength{\textheight}{235mm}
-\setlength{\oddsidemargin}{0mm}
-\setlength{\evensidemargin}{0mm}
-\setlength{\textwidth}{160mm}
+% \setlength{\topmargin}{-7mm}
+% \setlength{\oddsidemargin}{0mm}
+% \setlength{\evensidemargin}{0mm}
 % \setlength{\headheight}{6mm}
+
+% Área de texto
+\setlength{\textheight}{235mm}
+\setlength{\textwidth}{160mm}
 
 % --------------------------------------------------------------------------------------------------
 % TEMPLATE PADRÃO
@@ -55,36 +57,59 @@
     % Limpa todos os campos do cabeçalho e rodapé
     \fancyhf{}
 
+    % ----------------------------------------------------------------------------------------------
     % CABEÇALHOS
     % ----------------------------------------------------------------------------------------------
+
     % Cabeçalhos Pares
     \fancyhead[LE]{
         \color{header_text}
         %\chaptertitle para colocar o capitulo no cabelaho ou rodape
-        \fontsize{10}{10}\selectfont \nouppercase{\rightmark} \it \projectName \hfill \it \titleDocument
+        \fontsize{10}{10}\selectfont \it \projectName \hfill \it \titleDocument
     }
     % Cabeçalhos Ímpares
     \fancyhead[RO]{
         \color{header_text}
-        \fontsize{10}{10}\selectfont \nouppercase{\rightmark}  \it \titleDocument \hfill \it \projectName
+        \fontsize{10}{10}\selectfont \it \titleDocument \hfill \it \projectName
     }
+
     % Espaço entre o texto e a linha separadora
     \renewcommand{\headrulewidth}{0.5pt}
-    % Cor da linha separadora
-    \xpretocmd\headrule{\color{header_rule}}{}{\PatchFailed}
 
+    % Cor da linha separadora
+    \makeatletter
+    % \patchcmd{\footrule}
+    %   {\if@fancyplain}
+    %   {\color{header_rule}\if@fancyplain}
+    %   {}
+    %   {}
+      \xpretocmd\headrule{ \color{header_rule}  }{}{ \PatchFailed }
+    \makeatother
+
+    % ----------------------------------------------------------------------------------------------
     % RODAPÉS
     % ----------------------------------------------------------------------------------------------
+
     \fancyfoot[C]{
         \color{footer_text}
         \sffamily \fontsize{10pt}{10pt} \selectfont \thepage
     }
-    % Espaço entre o texto e a linha separadora
-    \renewcommand{\footrulewidth}{0pt}
-    % Cor da linha separadora
-    \xpretocmd\footrule{ \color{footer_rule} }{}{ \PatchFailed }
 
-    % PARÁGRAFOS
+    % Espaço entre o texto e a linha separadora
+    \renewcommand{\footrulewidth}{0.5pt}
+
+    % Cor da linha separadora
+    \makeatletter
+    \patchcmd{\footrule}
+      {\if@fancyplain}
+      {\color{footer_rule}\if@fancyplain}
+      {}
+      {}
+    \makeatother
+    % \xpretocmd\footrule{ \color{footer_rule} \relax }{}{ \PatchFailed }
+
+    % ----------------------------------------------------------------------------------------------
+    % PARÁGRAFOS TEXTUAIS
     % ----------------------------------------------------------------------------------------------
 
     % Entre linhas de 1,5
@@ -106,10 +131,6 @@
 % Formatação das seções
 \usepackage{titlesec}
 
-% Numeração de capitulos
-% \titleformat{\chapter}
-%     {\normalfont\LARGE\bfseries}{\color{chapter_count}\thechapter.}{10pt}{}
-
 % Numeração de seções nivel 1
 \titleformat{\section}
     {\normalfont\Large\bfseries}{\color{section_count}\thesection.}{10pt}{}
@@ -122,6 +143,14 @@
 \titleformat{\subsubsection}
     {\normalfont\normalsize\bfseries}{\color{subsubsection_count}\thesubsubsection.}{10pt}{}
 
+% Numeração de parágrafo (para leis)
+\titleformat{\paragraph}[runin]
+    {\normalfont\normalsize\bfseries}{\color{paragraph_text}\theparagraph}{1em}{}
+
+% Numeração de subparágrafo (para leis)
+\titleformat{\subparagraph}[runin]
+    {\normalfont\normalsize\bfseries}{\color{paragraph_text}\thesubparagraph}{1em}{}
+
 % Ativa até 5 níveis de numeração
 \setcounter{secnumdepth}{5}
 
@@ -132,9 +161,27 @@
 % '12pt' é o que gostaríamos que o espaçamento fosse.
 % 'plus 4pt' significa que o TeX pode esticá-lo em no máximo 4pt.
 % 'minus 2pt' significa que o TeX pode encolher no máximo 2pt.
-\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
-\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+
+% \titlespacing*{\chapter}     {0pt}{50pt}{40pt}
+% \titlespacing*{\section}     {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+% \titlespacing*{\subsection}   {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+% \titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+% \titlespacing*{\paragraph}   {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+% \titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+
+\titlespacing*{\section}                  {0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}               {0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+\titlespacing*{\subsubsection}            {0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+\titlespacing*{\paragraph}                {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\titlespacing*{\subparagraph}{\parindent} {3.25ex plus 1ex minus .2ex}{1em}
+
+
+
+
+
+% --------------------------------------------------------------------------------------------------
+% OUTROS
+% --------------------------------------------------------------------------------------------------
 
 % Remover Espaçamento de figuras, quadros e tabelas agrupadas por capítulo
 \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
@@ -215,15 +262,6 @@
 %\makeatletter
 %\let\l@lstlisting\l@figure
 %\makeatother
-
-
-
-\makeatletter
-% \let\my@chapter\@chapter
-% \renewcommand*{\@chapter}{%
-%     \addtocontents{lol}{\protect\addvspace{10pt}}%
-%     \my@chapter}
-% \makeatother
 
 %\addcontentsline{toc}{section}{\protect\numberline{}{Listings}}
 

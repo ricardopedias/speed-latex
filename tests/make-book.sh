@@ -18,9 +18,9 @@ echo "Teste de criação e compilação de livros";
 # rotina de execução
 {
 
-    ./make.sh -p test-book --type="article"; # cria um novo projeto latex
+    ./make.sh -p test-book --type="book"; # cria um novo projeto latex
     ./make.sh -c tests/temp/test-book; # compila o projeto
-    cp tests/temp/test-book/project.pdf tests/project.pdf;
+    cp tests/temp/test-book/project.pdf tests/book.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 

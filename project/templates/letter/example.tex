@@ -1,0 +1,53 @@
+%===================================================================================================
+% Autor             : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+% Site              : https://rpdesignerfly.github.io
+% Data de criação   : 29 de Janeiro de 2019
+% Referencias       : https://pt.overleaf.com/learn
+%                     https://texblog.org/code-snippets/beamer-presentation/
+% --------------------------------------------------------------------------------------------------
+
+% Documentos do tipo letter não possuem seções, apenas parágrafos
+
+%
+% Itálico: \textItalic{meu texto}.
+% Negrito: \textBold{meu texto}.
+% Enfatizado: \textit{meu \emph{texto} digitado}
+% Sublinhado: \textUnderline{meu texto}
+% Sublinhado Duplo: \textDouble{meu texto}
+% Sublinhado Ondulado: \textWaveUnderline{meu texto}
+% Riscado: \textDelete{meu texto}
+% Rasurado: \textStriped{meu texto}
+%===================================================================================================
+
+\docBodyText{
+    \lipsum[1]
+}
+
+\docBodyText{
+    \lipsum[1]
+}
+
+\docBodyText{
+    \lipsum[1]
+}
+
+\docBodyText{
+    \lipsum[1]\lipsum[1]
+}
+
+\begin{itemize}
+
+    \item \textItalic{Texto talic}
+    \item \textBold{Texto bold}
+    \item \textSuccess{Texto success}
+    \item \textDanger{Texto danger}
+    \item \textInfo{Texto info}
+    \item \textWarning{Text warning}
+
+    \item \textUnderline{Underline} \textUnderlineDanger{danger} \textUnderlineSuccess{success} \textUnderlineDanger{\textNormal{normal}} \textUnderlineSuccess{\textNormal{normal}}
+    \item \textDouble{Underline Double} \textDoubleDanger{danger} \textDoubleSuccess{success} \textDoubleDanger{\textNormal{normal}} \textDoubleSuccess{\textNormal{normal}}
+    \item \textWave{Wave} \textWaveDanger{danger} \textWaveSuccess{success} \textWaveDanger{\textNormal{normal}} \textWaveSuccess{\textNormal{normal}}
+    \item \textDelete{Delete} \textDeleteDanger{danger} \textDeleteSuccess{success} \textDeleteDanger{\textNormal{normal}} \textDeleteSuccess{\textNormal{normal}}
+    \item \textStriped{Spriped} \textStripedDanger{danger} \textStripedSuccess{success} \textStripedDanger{\textNormal{normal}} \textStripedSuccess{\textNormal{normal}}
+
+\end{itemize}

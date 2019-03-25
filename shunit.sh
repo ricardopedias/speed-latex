@@ -22,8 +22,14 @@ root_path="$PWD";
 # tests_list=$(ls tests/*.sh);
 tests_list=$(echo "
     tests/make-article.sh
-    
+    tests/make-letter.sh
+    tests/make-book.sh
+    tests/make-report.sh
 ");
+
+#
+#
+# tests/make-report.sh
 
 echo "==========================================================";
 echo "Executando testes de unidade";
@@ -50,7 +56,7 @@ for test in $tests_list; do
     result_text=$(./$test);
     result_sign="$?";
 
-    if [ "$result_sign" = "0" ]; then
+    if [ "$result_sign" = "1" ]; then
         echo -e "${GREEN}[Ok] $result_text${NORMAL}";
     else
         echo -e "${RED}[Fail] $result_text${NORMAL}";

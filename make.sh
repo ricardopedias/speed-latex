@@ -34,7 +34,7 @@ Comandos disponíveis:
 libs_dir="/usr/share/speed-latex";
 work_dir="$HOME/.speed-latex/temp";
 curr_dir="$PWD";
-devel_mode='no';
+test_mode='no';
 
 # parâmetros padrões
 project_create='none';
@@ -191,7 +191,7 @@ done;
 # determina se o programa está sendo executado em modo de desenvolvimento
 if [ -f "$curr_dir/make.sh" ]; then
 
-    devel_mode='yes';
+    test_mode='yes';
 
     # cria o diretório temporário para testes
     if [ ! -d "$curr_dir/tests/temp" ]; then
@@ -226,7 +226,7 @@ if [ "$project_create" != "none" ]; then
     fi
 
     # determina o local de criação do projeto
-    if [ "$devel_mode" = 'yes' ]; then
+    if [ "$test_mode" = 'yes' ]; then
         project_dir=$curr_dir/tests/temp/$project_create;
     else
         project_dir=$curr_dir/$project_create;
@@ -245,8 +245,6 @@ if [ "$project_create" != "none" ]; then
     mkdir -p $project_dir/libraries;
     cp /usr/share/speed-latex/libraries/document-fonts-free.tex $project_dir/libraries/document-fonts-free.tex;
     cp /usr/share/speed-latex/libraries/document-fonts-non-free.tex $project_dir/libraries/document-fonts-non-free.tex;
-    cp /usr/share/speed-latex/libraries/document-functions.tex $project_dir/libraries/document-functions.tex;
-    cp /usr/share/speed-latex/libraries/document-packages.tex $project_dir/libraries/document-packages.tex;
 
     # cria o conteúdo
     mkdir -p $project_dir/contents;
@@ -254,7 +252,13 @@ if [ "$project_create" != "none" ]; then
     # cria o documento do projeto
     case $project_type in
         article)
+
             echo "Criando um projeto de artigo em $project_dir";
+
+            cp /usr/share/speed-latex/libraries/document-packages-article.tex $project_dir/libraries/document-packages-article.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-sections.tex $project_dir/libraries/document-functions-sections.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
+
             cp /usr/share/speed-latex/templates/article/class-article.cls $project_dir/libraries/class-article.cls;
             cp /usr/share/speed-latex/templates/article/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/article/example.tex $project_dir/contents/example.tex;
@@ -262,7 +266,14 @@ if [ "$project_create" != "none" ]; then
         ;;
 
         book)
+
             echo "Criando um projeto de livro em $project_dir";
+
+            cp /usr/share/speed-latex/libraries/document-packages-book.tex $project_dir/libraries/document-packages-book.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-addsections.tex $project_dir/libraries/document-functions-addsections.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-sections.tex $project_dir/libraries/document-functions-sections.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
+
             cp /usr/share/speed-latex/templates/book/class-book.cls $project_dir/libraries/class-book.cls;
             cp /usr/share/speed-latex/templates/book/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/book/example.tex $project_dir/contents/example.tex;
@@ -270,7 +281,12 @@ if [ "$project_create" != "none" ]; then
         ;;
 
         letter)
+
             echo "Criando um projeto de carta em $project_dir";
+
+            cp /usr/share/speed-latex/libraries/document-packages-letter.tex $project_dir/libraries/document-packages-letter.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
+
             cp /usr/share/speed-latex/templates/letter/class-letter.cls $project_dir/libraries/class-letter.cls;
             cp /usr/share/speed-latex/templates/letter/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/letter/example.tex $project_dir/contents/example.tex;
@@ -278,7 +294,14 @@ if [ "$project_create" != "none" ]; then
         ;;
 
         report)
+
             echo "Criando um projeto de relatório em $project_dir";
+
+            cp /usr/share/speed-latex/libraries/document-packages-report.tex $project_dir/libraries/document-packages-report.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-addsections.tex $project_dir/libraries/document-functions-addsections.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-sections.tex $project_dir/libraries/document-functions-sections.tex;
+            cp /usr/share/speed-latex/libraries/document-functions-texts.tex $project_dir/libraries/document-functions-texts.tex;
+
             cp /usr/share/speed-latex/templates/report/class-report.cls $project_dir/libraries/class-report.cls;
             cp /usr/share/speed-latex/templates/report/project.tex $project_dir/project.tex;
             cp /usr/share/speed-latex/templates/report/example.tex $project_dir/contents/example.tex;

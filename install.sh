@@ -28,6 +28,7 @@ echo "------------------------------------------------------------------------";
 if [ -d "/usr/share/speed-latex" ]; then
     # remove instalações anteriores
     sudo rm -Rf /usr/share/speed-latex
+    sudo unlink /usr/bin/speed-latex
 fi
 sudo cp -rf $root_dir /usr/share/speed-latex
 #sudo chmod 777 -Rf /usr/share/speed-latex/*

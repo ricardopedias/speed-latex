@@ -9,13 +9,15 @@
 % organização das páginas,
 % tamanho padrão da fonte,
 % idioma do latex
-\documentclass[a4paper,twoside,12pt,portuges]{libraries/class-letter}
+\documentclass[a4paper,twoside,12pt,portuges]{libraries/class-book}
 
 % Pacotes configurados para utilização
-\include{libraries/document-packages}
+\include{libraries/document-packages-book}
 
 % Funções personalizadas
-\include{libraries/document-functions}
+\include{libraries/document-functions-addsections}
+\include{libraries/document-functions-sections}
+\include{libraries/document-functions-texts}
 
 % Informações pré-definidas
 \include{variables}
@@ -37,38 +39,16 @@
     \pagestyle{empty}
     \begin{clean_page}
 
-        \include{contents/cover-simple}
-
-        % \include{00-sumario}
-        % \include{01-objetivo}
-
-        % \include{folha_aprovacao} % Folha de Aprovação
-        % \include{dedicatoria} % Dedicatória
-        % \include{agradecimentos} % Dedicatória
-        % \include{epigrafe} % Epígrafe
-        % \include{resumo} % Resumo
-        % \include{abstract} % Abstract
-        % \include{lista_figuras} % Lista de Figuras
-        % \include{lista_tabelas} % Lista de Tabelas
-        % \include{lista_quadros} % Lista de Quadros
-        % \include{lista_siglas} %Lista de Siglas
+        \include{templates/book/cover-simple}
 
     \end{clean_page}
 
     % Páginas com capeçalho e rodapé
     \pagestyle{fancy}
 
-    \include{contents/example}
+    \tableofcontents{}
 
-    % \include{introducao} % Introdução
-    % \include{fundamentacao} % Fundamentação
-    % \include{metodologia} % Aplicação
-    % \include{resultados} % Resultados
-    % \include{conclusao} % Conclusão
+    \include{templates/book/example}
 
-    % \pagestyle{empty}
-    % \include{referencias} % Referências Bibliográficas
-    % \include{apendice}
-    % \include{anexo}
 
 \end{document}

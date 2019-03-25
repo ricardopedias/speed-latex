@@ -9,13 +9,14 @@
 % organização das páginas,
 % tamanho padrão da fonte,
 % idioma do latex
-\documentclass[a4paper,twoside,12pt,portuges]{libraries/class-report}
+\documentclass[a4paper,twoside,12pt,portuges]{libraries/class-article}
 
 % Pacotes configurados para utilização
-\include{libraries/document-packages}
+\include{libraries/document-packages-article}
 
 % Funções personalizadas
-\include{libraries/document-functions}
+\include{libraries/document-functions-sections}
+\include{libraries/document-functions-texts}
 
 % Informações pré-definidas
 \include{variables}
@@ -37,7 +38,7 @@
     \pagestyle{empty}
     \begin{clean_page}
 
-        \include{contents/cover-simple}
+        \include{templates/article/cover-simple}
 
         % \include{00-sumario}
         % \include{01-objetivo}
@@ -58,7 +59,9 @@
     % Páginas com capeçalho e rodapé
     \pagestyle{fancy}
 
-    \include{contents/example}
+    \tableofcontents{}
+
+    \include{templates/article/example}
 
     % \include{introducao} % Introdução
     % \include{fundamentacao} % Fundamentação

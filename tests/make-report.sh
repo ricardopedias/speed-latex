@@ -20,11 +20,11 @@ echo "Teste de criação e compilação de relatórios";
 
     ./make.sh -p test-report --type="report"; # cria um novo projeto latex
     ./make.sh -c tests/temp/test-report; # compila o projeto
-    cp tests/temp/test-report/project.pdf tests/project.pdf;
+    cp tests/temp/test-report/project.pdf tests/report.pdf;
 
 } > tests/temp/output.txt 2> tests/temp/output.txt;
 
 # rotina de asserção
-assert_file_exists 'tests/temp/test-book/project.pdf';
+assert_file_exists 'tests/temp/test-report/project.pdf';
 
 exit 1; # ok, todos os testes funcionaram

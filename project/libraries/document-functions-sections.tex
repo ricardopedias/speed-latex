@@ -1,0 +1,45 @@
+%===================================================================================================
+% Autor             : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+% Data de criação   : 29 de Janeiro de 2019
+% Referencias       : https://pt.overleaf.com/learn
+%                     https://texblog.org/code-snippets/beamer-presentation/
+%                     https://aprendolatex.wordpress.com/2007/06/09/seccoes-em-latex/
+%                     https://pt.wikibooks.org/wiki/Latex/Se%C3%A7%C3%B5es
+% --------------------------------------------------------------------------------------------------
+% Este arquivo contém as funções personalizadas para facilitar a criação de documentos
+%===================================================================================================
+
+% Função para criar seção de nivel 1
+\newcommand{\docSection}[1] {
+    \section{
+        \textcolor{section_text}{ #1 }
+    }
+}
+
+% Função para criar seção de nivel 2
+\newcommand{\docSubSection}[1] {
+    \subsection{
+        \textcolor{subsection_text}{ #1 }
+    }
+}
+
+% Função para criar seção de nivel 3
+\newcommand{\docSubSubSection}[1] {
+    \subsubsection{
+        \textcolor{subsubsection_text}{ #1 }
+    }
+}
+
+% Função para criar seção de nivel 3
+\newcommand{\docParagraph}[1] {
+    \paragraph{
+        \textcolor{paragraph_text}{ #1 }
+    }
+}
+
+% Função para criar seção de nivel 3
+\newcommand{\docSubParagraph}[1] {
+    \subparagraph{
+        \textcolor{subparagraph_text}{ #1 }
+    }
+}
