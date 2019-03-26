@@ -9,7 +9,7 @@
 % organização das páginas,
 % tamanho padrão da fonte,
 % idioma do latex
-\documentclass[a4paper,twoside,12pt,portuges]{libraries/class-article}
+\documentclass[a4paper,twoside,12pt,portuges,hidelinks]{libraries/class-article}
 
 % Pacotes configurados para utilização
 \include{libraries/document-packages-article}
@@ -60,6 +60,8 @@
     \pagestyle{fancy}
 
     \tableofcontents{}
+
+    \listoftables{}
 
     \include{templates/article/example}
 

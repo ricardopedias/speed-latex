@@ -42,6 +42,10 @@
 
 \docSection{ Formatação de textos }
 
+% --------------------------------------------------------------------------------------------------
+% Lista de opções
+% --------------------------------------------------------------------------------------------------
+
 \begin{itemize}
 
     \item \textItalic{Texto talic}
@@ -58,3 +62,41 @@
     \item \textStriped{Spriped} \textStripedDanger{danger} \textStripedSuccess{success} \textStripedDanger{\textNormal{normal}} \textStripedSuccess{\textNormal{normal}}
 
 \end{itemize}
+
+
+% --------------------------------------------------------------------------------------------------
+% Tabelas
+% --------------------------------------------------------------------------------------------------
+
+\begin{center}
+
+    % Simples
+    \begin{tabular}{ |c|c|c| }
+
+        \hline
+        ID & Nome & Status \\ [3ex] % Altura da linha
+        \hline
+        1 & PHP & Ativo \\
+        \hline
+        2 & ASP & Inativo \\
+        \hline
+        3 & JAVA & Ativo \\
+        \hline
+
+    \end{tabular}
+
+    % \rowcolors{1}{green}{pink}
+    % \usepackage[table]{xcolor}
+
+\end{center}
+
+
+% \usepackage{tabularx}
+%
+% \begin{tabularx}{\textwidth}{ |X|X|X|X| }
+%   \hline
+%   label 1 & label 2 & label 3 & label 4 \\
+%   \hline
+%   item 1  & item 2  & item 3  & item 4  \\
+%   \hline
+% \end{tabularx}
