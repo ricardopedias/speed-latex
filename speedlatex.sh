@@ -255,43 +255,85 @@ if [ "$project_create" != "none" ]; then
 
     # cria o documento do projeto
     case $project_type in
-        article)
 
-            echo "Criando um projeto de artigo em $project_dir";
-            cp $libs_dir/project/article.tex $project_dir/project.tex;
+        abnt-academic-work)
 
-        ;;
-
-        book)
-
-            echo "Criando um projeto de livro em $project_dir";
-            cp $libs_dir/project/book.tex $project_dir/project.tex;
+            echo "Criando um projeto de Trabalho Acadêmico em $project_dir";
+            cp $libs_dir/project/abnt-academic-work.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-abnt.tex $project_dir/variables-abnt.tex;
 
         ;;
 
-        letter)
+        abnt-article)
 
-            echo "Criando um projeto de carta em $project_dir";
-            cp $libs_dir/project/letter.tex $project_dir/project.tex;
+            echo "Criando um projeto de Artigo Acadêmico em $project_dir";
+            cp $libs_dir/project/abnt-article.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-abnt.tex $project_dir/variables-abnt.tex;
 
         ;;
 
-        report)
+        abnt-research-project)
 
-            echo "Criando um projeto de relatório em $project_dir";
-            cp $libs_dir/project/report.tex $project_dir/project.tex;
+            echo "Criando um projeto de Projeto de Pesquisa em $project_dir";
+            cp $libs_dir/project/abnt-research-project.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-abnt.tex $project_dir/variables-abnt.tex;
+
+        ;;
+
+        abnt-slides)
+
+            echo "Criando um projeto de Slides em $project_dir";
+            cp $libs_dir/project/abnt-slides.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-abnt.tex $project_dir/variables-abnt.tex;
+
+        ;;
+
+        abnt-tecnical-report)
+
+            echo "Criando um projeto de Relatório Técnico em $project_dir";
+            cp $libs_dir/project/abnt-tecnical-report.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-abnt.tex $project_dir/variables-abnt.tex;
+
+        ;;
+
+        common-book)
+
+            echo "Criando um projeto de Livro Simples em $project_dir";
+            cp $libs_dir/project/common-book.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-common.tex $project_dir/variables-common.tex;
+
+        ;;
+
+        common-document)
+
+            echo "Criando um projeto de Documento Simples em $project_dir";
+            cp $libs_dir/project/common-document.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-common.tex $project_dir/variables-common.tex;
+
+        ;;
+
+        common-letter)
+
+            echo "Criando um projeto de Carta Simples em $project_dir";
+            cp $libs_dir/project/common-letter.tex $project_dir/project.tex;
+            cp $libs_dir/project/variables-common.tex $project_dir/variables-common.tex;
 
         ;;
 
         *)
             echo "Tipo inválido de projeto";
-            echo "Os tipos disponiveis são article|book|letter|report"
+            echo "Os tipos disponiveis são:";
+            echo "- abnt-academic-work"
+            echo "- abnt-article"
+            echo "- abnt-research-project"
+            echo "- common-book"
+            echo "- common-document"
+            echo "- common-letter"
             exit 1; #erro
         ;;
     esac
 
-    # cria as variáveis
-    cp $libs_dir/project/variables.tex $project_dir/variables.tex;
+
 
     # cria o diretório de assets
     mkdir -p $project_dir/assets;
@@ -367,10 +409,18 @@ if [ "$project_compile" != "none" ]; then
     cd $project_dir;
 
     # compila o projeto
-    latexmk -gg -pdf -halt-on-error project.tex | grep '^!.*' -A200 --color=always;
-
+    # latexmk -gg -pdf -halt-on-error project.tex | grep '^!.*' -A200 --color=always;
     # limpa os arquivos temporários
     # latexmk -c
+
+    # https://www.texpad.com/support/latex/indices/using-makeindex
+
+    pdflatex project.tex # primeira compilação (gera os arquivos)
+    bibtex project.aux
+    makeindex -s project.ist -t project.glg -o project.gls project.glo # gera as informações de glossario
+    makeglossaries project.aux # cria o glossário
+    pdflatex project.tex # compila com o glossario
+    pdflatex project.tex # compila com o glossario checanado as citações do docuemnto
 
     # volta para o diretório original
     if [ "$project_dir" != "$curr_dir" ]; then
