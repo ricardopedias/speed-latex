@@ -1,0 +1,141 @@
+%====================================================================================================
+%----------------------------------------------------------------------------------------------------
+% Autor              : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+%----------------------------------------------------------------------------------------------------
+% Data de criação    : 29 de Janeiro de 2019
+%====================================================================================================
+
+%Variáveis
+
+\newcommand{\projectType}{Projeto de pesquisa}
+\newcommand{\projectName}{Modelo com com Speed Latex}
+\newcommand{\projectAuthor}{Ricardo Pereira Dias}
+\newcommand{\projectContact}{rpdesignerfly@gmail.com}
+\newcommand{\projectCity}{São Carlos - SP}
+\newcommand{\projectDate}{2019}
+\newcommand{\projectVersion}{, v-1.0.0}
+
+
+%=========================================================================
+% CABEÇALHO
+%=========================================================================
+% Aparência
+\definecolor{header_rule}{RGB}{ 200, 200, 200 }
+\definecolor{header_text}{RGB}{ 200, 200, 200 }
+% \newcommand{\headerRuleHeight}{0.4pt}
+\newcommand{\headerRuleHeight}{0pt}
+% Páginas ímpares
+\newcommand{\headerOddLeft}{}
+\newcommand{\headerOddCenter}{}
+\newcommand{\headerOddRight}{\thepage}
+% Páginas Pares
+\newcommand{\headerEvenLeft}{\thepage}
+\newcommand{\headerEvenCenter}{}
+\newcommand{\headerEvenRight}{}
+
+
+%=========================================================================
+% RODAPÉ
+%=========================================================================
+% Aparência
+\definecolor{footer_rule}{RGB}{ 200, 200, 200 }
+\definecolor{footer_text}{RGB}{ 200, 200, 200 }
+% \newcommand{\footerRuleHeight}{0.4pt}
+\newcommand{\footerRuleHeight}{0pt}
+% Páginas ímpares
+\newcommand{\footerOddLeft}{}
+\newcommand{\footerOddCenter}{}
+\newcommand{\footerOddRight}{}
+% Páginas Pares
+\newcommand{\footerEvenLeft}{}
+\newcommand{\footerEvenCenter}{}
+\newcommand{\footerEvenRight}{}
+
+%=========================================================================
+% CORES GERAIS
+%=========================================================================
+% http://erikasarti.com/html/tabela-cores/
+\definecolor{black}{RGB}{0,0,0}
+% \definecolor{blue}{RGB}{41,5,195}
+\definecolor{blue}{RGB}{2,69,156}
+\definecolor{dim_gray}{RGB}{105,105,105}
+\definecolor{gray}{RGB}{128,128,128}
+\definecolor{dark_gray}{RGB}{169,169,169}
+\definecolor{silver}{RGB}{192,192,192}
+\definecolor{light_grey}{RGB}{211,211,211}
+\definecolor{gainsboro}{RGB}{220,220,220}
+\definecolor{white}{RGB}{255,255,255}
+
+\definecolor{success_text}{RGB}{ 43, 180, 54 }
+\definecolor{info_text}{RGB}{ 2, 69, 156 }
+\definecolor{warning_text}{RGB}{ 255, 158, 0}
+\definecolor{danger_text}{RGB}{ 255, 60, 0 }
+
+%=========================================================================
+% CAPÍTULOS E SEÇÕES
+%=========================================================================
+
+% Vários exemplos de capitulos
+% http://tug.ctan.org/info/MemoirChapStyles/
+% https://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% Para formatar todos os niveis de seção
+\newcommand{\sectioningTopStyle}{\bfseries}
+\newcommand{\sectioningSecStyle}{\bfseries}
+\newcommand{\sectioningFinalDot}{} % Para poder adicionar um character no final da numeração
+
+
+% Partes
+% Declaração: Parte 1
+\newcommand{\partAssertionFont}{\sffamily}
+\newcommand{\partAssertionStyle}{\sectioningTopStyle}
+\newcommand{\partAssertionSize}{\large}
+% Título da parte
+\newcommand{\partFont}{\sffamily}
+\newcommand{\partStyle}{\sectioningTopStyle}
+\newcommand{\partSize}{\Huge}
+\definecolor{part_count}{RGB}{ 2, 69, 156 }
+\definecolor{part_text}{RGB}{ 255, 69, 156 }
+
+% Capítulos
+% \newcommand{\chapterFont}{\sffamily}
+\newcommand{\chapterFont}{\sffamily}
+\newcommand{\chapterStyle}{\sectioningTopStyle}
+\newcommand{\chapterSize}{\Huge}
+\definecolor{chapter_count}{RGB}{ 200, 69, 0 }
+\definecolor{chapter_text}{RGB}{ 2, 69, 156 }
+
+% Seções
+\newcommand{\sectionFont}{\sffamily}
+\newcommand{\sectionStyle}{\sectioningSecStyle}
+\newcommand{\sectionSize}{\Large}
+\definecolor{section_count}{RGB}{ 200, 69, 50 }
+\definecolor{section_text}{RGB}{ 2, 69, 156 }
+
+% Sub Seções
+\newcommand{\subsectionFont}{\sffamily}
+\newcommand{\subsectionStyle}{\sectioningSecStyle}
+\newcommand{\subsectionSize}{\large}
+\definecolor{subsection_count}{RGB}{ 200, 100, 50 }
+\definecolor{subsection_text}{RGB}{ 2, 69, 156 }
+
+% Sub Sub Seções
+\newcommand{\subsubsectionFont}{\sffamily}
+\newcommand{\subsubsectionStyle}{\sectioningSecStyle}
+\newcommand{\subsubsectionSize}{\normalsize}
+\definecolor{subsubsection_count}{RGB}{ 200, 69, 0 }
+\definecolor{subsubsection_text}{RGB}{ 2, 69, 156 }
+
+% Sub Sub Sub Seções
+\newcommand{\subsubsubsectionFont}{\sffamily}
+\newcommand{\subsubsubsectionStyle}{\sectioningSecStyle}
+\newcommand{\subsubsubsectionSize}{\normalsize}
+\definecolor{subsubsubsection_count}{RGB}{ 200, 69, 0 }
+\definecolor{subsubsubsection_text}{RGB}{ 2, 69, 156 }
+
+\definecolor{paragraph_text}{RGB}{ 15, 15, 15 } % parágrafo de leis ou documentos
+\definecolor{subparagraph_text}{RGB}{ 50, 50, 50 } % subparágrafo de leis ou documentos
+
+% Corpo de texto
+\definecolor{body_text}{RGB}{ 100, 100, 100 }
+\definecolor{link_text}{RGB}{ 2, 69, 156 }

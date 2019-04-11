@@ -1,0 +1,66 @@
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Autor              : Ricardo Pereira Dias <contato@ricardopdias.com.br>
+% Data de criação    : 29 de Janeiro de 2019
+% Referência         : https://github.com/abntex/abntex2/blob/master/tex/latex/abntex2/abntex2.cls
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% Opções Memoir
+% 12pt       tamanho da fonte
+% openright  capítulos começam em pág ímpar (insere página vazia caso preciso)
+% twoside    para impressão em recto e verso. Oposto a oneside
+% a4paper    % tamanho do papel.
+
+% Opções Abntex2
+% Para converter as seções pra etra maiúscula
+% chapter=TITLE, section=TITLE, subsection=TITLE, subsubsection=TITLE
+% Para converter as seções pra letra minúscula
+% chapter=title, section=title, subsection=title, subsubsection=title
+% sumario=tradicional|abnt-6027-2012
+% Opções do pacote Babel
+% english   idioma adicional para hifenização
+% french    idioma adicional para hifenização
+% spanish   idioma adicional para hifenização
+% brazil    % o último idioma é o principal do documento
+
+\documentclass[
+    12pt,openright,oneside,a4paper, % Memoir
+    brazil, % Babel
+]{abntex2}
+
+% Pacotes configurados para utilização
+\include{libraries/document-packages-common}
+
+% Informações pré-definidas
+\input{templates/common-letter/variables}%
+
+% Configurações do documento
+\include{libraries/document-config-common}
+\include{libraries/document-config-common-letter}
+
+% Fontes que acompanham o texlive
+% \include{libraries/fonts/avant}
+% \include{libraries/fonts/arial}
+% \include{libraries/fonts/bera}
+% \include{libraries/fonts/cabin}
+% \include{libraries/fonts/fira}
+% \include{libraries/fonts/lmodern}
+\include{libraries/fonts/roboto}
+
+% Altera as margens padrões
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% Espaçamento simples
+\SingleSpacing
+
+\begin{document}
+
+    % Define o idioma do documento (conforme pacotes do babel)
+    \selectlanguage{brazil}
+
+    % Retira espaço extra obsoleto entre as frases.
+    \frenchspacing
+
+    \input{templates/common-letter/texto}%
+
+\end{document}
