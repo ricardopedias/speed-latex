@@ -1,0 +1,56 @@
+% ---
+% GLOSSARIO
+% ---
+\makeglossaries
+
+% ---
+% entradas do glossario
+% ---
+ \newglossaryentry{pai}{
+                name={pai},
+                plural={pai},
+                description={este é uma entrada pai, que possui outras
+                subentradas.} }
+
+ \newglossaryentry{componente}{
+                name={componente},
+                plural={componentes},
+                parent=pai,
+                description={descriação da entrada componente.} }
+
+ \newglossaryentry{filho}{
+                name={filho},
+                plural={filhos},
+                parent=pai,
+                description={isto é uma entrada filha da entrada de nome
+                \gls{pai}. Trata-se de uma entrada irmã da entrada
+                \gls{componente}.} }
+
+\newglossaryentry{equilibrio}{
+                name={equilíbrio da configuração},
+                see=[veja também]{componente},
+                description={consistência entre os \glspl{componente}}
+                }
+
+\newglossaryentry{latex}{
+                name={LaTeX},
+                description={ferramenta de computador para autoria de
+                documentos criada por D. E. Knuth} }
+
+\newglossaryentry{abntex2}{
+                name={abnTeX2},
+                see=latex,
+                description={suíte para LaTeX que atende os requisitos das
+                normas da ABNT para elaboração de documentos técnicos e científicos brasileiros} }
+
+\newglossaryentry{speedlatex}{
+                name={Speed Latex},
+                see=latex,
+                description={ferramenta para agilizar a criação de documentos em Latex
+                de forma facilitada e personalizável} }
+
+% ---
+% Exemplo de configurações do glossairo
+\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+ \glsseelist{#2}}
+% ---
