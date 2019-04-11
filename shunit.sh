@@ -20,16 +20,22 @@ sudo ./install.sh > /dev/null;
 
 root_path="$PWD";
 # tests_list=$(ls tests/*.sh);
+
+# tests_list=$(echo "
+#     tests/make-abnt-slides.sh
+#     tests/make-abnt-technical-report.sh
+#     tests/make-common-book.sh
+#     tests/make-common-document.sh
+# ");
+
 tests_list=$(echo "
-    tests/make-article.sh
-    tests/make-letter.sh
-    tests/make-book.sh
-    tests/make-report.sh
+    tests/make-abnt-academic-work.sh
+    tests/make-abnt-article.sh
+    tests/make-abnt-research-project.sh
+    tests/make-common-book.sh
+    tests/make-common-letter.sh
 ");
 
-#
-#
-# tests/make-report.sh
 
 echo "==========================================================";
 echo "Executando testes de unidade";
@@ -67,6 +73,11 @@ for test in $tests_list; do
 
     # remove arquivos temporários gerados pelos testes
     rm -Rf tests/temp/*
+
+    # remove os arquivos temporaŕios no projeto do pacote
+    sudo ./clear.sh project
+    sudo ./clear.sh project/assets
+    sudo ./clear.sh project/libraries
 
 done
 
