@@ -1,0 +1,364 @@
+
+    %===================================================================================================
+    % ELEMENTOS TEXTUAIS
+    %===================================================================================================
+
+    % ------------------------------------------------------------------------
+    % Capitulo de textual
+    % ------------------------------------------------------------------------
+    \chapter{Elementos textuais}
+
+    \index{elementos textuais}A norma ABNT NBR 15287:2011, p. 5, apresenta a
+    seguinte orientação quanto aos elementos textuais:
+
+    \begin{citacao}
+    O texto deve ser constituído de uma parte introdutória, na qual devem ser
+    expostos o tema do projeto, o problema a ser abordado, a(s) hipótese(s),
+    quando couber(em), bem como o(s) objetivo(s) a ser(em) atingido(s) e a(s)
+    justificativa(s). É necessário que sejam indicados o referencial teórico que
+    o embasa, a metodologia a ser utilizada, assim como os recursos e o cronograma
+    necessários à sua consecução.
+    \end{citacao}
+
+    Consulte as demais normas da série ``Informação e documentação'' da ABNT
+    para outras informações. Uma lista com as principais normas dessa série, todas
+    observadas pelo \abnTeX, é apresentada em \citeonline{abntex2classe}.
+
+    \section{Setando Tipos de Familias de Fontes}
+
+    Abaixo as respectivas formatações manuais:
+
+    \begin{itemize}
+
+        \item \textsf{Familia Sans, setada manualmente}
+        \item \textrm{Familia Romana/Serif, setada manualmente}
+        \item \texttt{Familia Monoespaçada, setada manualmente}
+
+    \end{itemize}
+
+    \section{Setando os Estilos de  Fontes}
+
+    Abaixo as respectivas formatações manuais:
+
+    \begin{itemize}
+
+        \item \textnormal{Texto normal}
+        \item \emph{Texto enfatizado}
+        \item \textit{Texto em itálico}
+        \item \textsc{Texto em versalete}
+        \item \uppercase{Texto em caixa alta}
+        \item \textbf{Texto em negrito}
+        % \item \textmd{Texto em peso medio}
+        % \item \textlf{Texto light}
+
+    \end{itemize}
+
+    \section{Setando os tamanhos de Fontes}
+
+    Abaixo as respectivas formatações manuais:
+
+    \begin{itemize}
+
+        \item {\tiny Texto tiny}
+        \item {\scriptsize Texto scriptsize}
+        \item {\footnotesize Texto footnotesize}
+        \item {\small Texto small}
+        \item {\normalsize Texto normalsize}
+        \item {\large Texto large}
+        \item {\Large Texto Large}
+        \item {\LARGE Texto LARGE}
+        \item {\huge Texto huge}
+        \item {\Huge Texto Huge}
+
+    \end{itemize}
+
+    \section{Setando a tipografia}
+
+    A tipografia é setada especificando os seguintes parâmetros:
+
+    \begin{itemize}
+        \item fontfamily - O nome da fonte a ser usada
+
+        \item fontseries Padrões
+            \begin{itemize}
+                \item m - Medium
+                \item b - Bold
+                \item c - Condensed
+                \item bc - Bold Condensed
+                \item bx - Bold Extended
+            \end{itemize}
+
+        \item fontseries Pesos
+            \begin{itemize}
+                \item ul - Ultra light
+                \item el - Extra light
+                \item l - Light
+                \item sl - Semi light
+                \item m - Medium (normal)
+                \item sb - Semi bold
+                \item b - Bold
+                \item eb - Extra bold
+                \item ub - Ultra bold
+            \end{itemize}
+
+        \item fontseries Larguras
+            \begin{itemize}
+                \item uc - Ultra condensed
+                \item ec - Extra Condensed
+                \item c -  Condensed
+                \item sc - Semi condensed
+                \item m - Medium 100
+                \item sx - Semi expanded
+                \item x - Expanded
+                \item ex - Extra expanded
+                \item ux - Ultra expanded
+            \end{itemize}
+
+        \item fontshape
+            \begin{itemize}
+                \item n - Normal
+                \item it - Itálico
+                \item sl - Slanted ou Oblique
+                \item sc - Caps e Small Caps
+                \item scit - Small caps itálico
+            \end{itemize}
+
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Avant Garde}
+    \begin{itemize}
+        \item {\fontfamily{pag}\selectfont Avant Garde}
+        \item {\fontfamily{pag}\fontseries{m}\selectfont Avant Garde Book}
+        \item {\fontfamily{pag}\fontseries{b}\selectfont Avant Garde Demi}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Bera Serif}
+    \begin{itemize}
+        \item {\fontfamily{fve}\selectfont Bera Serif}
+        \item {\fontfamily{fve}\fontseries{m}\fontshape{n}\selectfont Bera Serif Roman}
+        \item {\fontfamily{fve}\fontseries{m}\fontshape{sl}\selectfont Bera Serif Roman Oblique}
+        \item {\fontfamily{fve}\fontseries{b}\fontshape{n}\selectfont Bera Serif Bold}
+        \item {\fontfamily{fve}\fontseries{b}\fontshape{sl}\selectfont Bera Serif Bold Oblique}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Bera Sans}
+    \begin{itemize}
+        \item {\fontfamily{fvs}\selectfont Bera Sans}
+        \item {\fontfamily{fvs}\fontseries{m}\fontshape{n}\selectfont Bera Sans Roman}
+        \item {\fontfamily{fvs}\fontseries{m}\fontshape{sl}\selectfont Bera Sans Roman Oblique}
+        \item {\fontfamily{fvs}\fontseries{b}\fontshape{n}\selectfont Bera Sans Bold}
+        \item {\fontfamily{fvs}\fontseries{b}\fontshape{sl}\selectfont Bera Sans Bold Oblique}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Bera Sans Mono}
+    \begin{itemize}
+        \item {\fontfamily{fvm}\selectfont Bera Sans Mono}
+        \item {\fontfamily{fvm}\fontseries{m}\fontshape{n}\selectfont Bera Sans Mono Roman}
+        \item {\fontfamily{fvm}\fontseries{m}\fontshape{sl}\selectfont Bera Sans Mono Roman Oblique}
+        \item {\fontfamily{fvm}\fontseries{b}\fontshape{n}\selectfont Bera Sans Mono Bold}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Bookman}
+    \begin{itemize}
+        \item {\fontfamily{pbk}\selectfont Bookman}
+        \item {\fontfamily{pbk}\fontseries{m}\fontshape{n}\selectfont Bookman Light}
+        \item {\fontfamily{pbk}\fontseries{m}\fontshape{sl}\selectfont Bookman Light Italic}
+        \item {\fontfamily{pbk}\fontseries{b}\fontshape{n}\selectfont Bookman Demi}
+        \item {\fontfamily{pbk}\fontseries{b}\fontshape{sl}\selectfont Bookman Demi Italic}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Cabin}
+    As séries disponíveis são b (bold), sb (semi bold), m (medium);
+    Os shapes disponíveis: n (normal), it (itálico), sc (small caps), scit (small caps itálico);
+    \begin{itemize}
+         \item {\fontfamily{Cabin-TLF}\selectfont Cabin}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Cabin Condensed}
+    As séries disponíveis são b (bold), sb (semi bold), m (medium);
+    Os shapes disponíveis: n (normal), it (itálico), sc (small caps), scit (small caps itálico);
+    \begin{itemize}
+        \item {\fontfamily{CabinCondensed-TLF}\selectfont Cabin Condensed}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Charter}
+    \begin{itemize}
+        \item {\fontfamily{bch}\selectfont Charter}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Cyklop}
+    \begin{itemize}
+        \item {\fontfamily{cyklop}\selectfont Cyklop}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Computer Concrete}
+    \begin{itemize}
+        \item {\fontfamily{ccr}\selectfont Computer Concrete}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Computer Modern}
+    \begin{itemize}
+        \item {\fontfamily{cmr}\selectfont Computer Modern}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Courier}
+    \begin{itemize}
+        \item {\fontfamily{pcr}\selectfont Courier}
+        \item {\fontfamily{pcr}\fontseries{m}\fontshape{n}\selectfont Courier Oblique}
+        \item {\fontfamily{pcr}\fontseries{m}\fontshape{sl}\selectfont Courier Oblique}
+        \item {\fontfamily{pcr}\fontseries{m}\fontshape{sc}\selectfont Courier Oblique}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Fira Sans}
+    \begin{itemize}
+        \item {\fontfamily{FiraSans}\selectfont Fira Sans}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Helvetica}
+    \begin{itemize}
+        \item {\fontfamily{phv}\selectfont Helvetica}
+        \item {\fontfamily{phv}\fontseries{m}\fontshape{sl}\selectfont Helvetica Oblique}
+
+        \item {\fontfamily{phv}\fontseries{b}\fontshape{n}\selectfont Helvetica Bold}
+        \item {\fontfamily{phv}\fontseries{b}\fontshape{sl}\selectfont Helvetica Bold Oblique}
+
+        \item {\fontfamily{phv}\fontseries{mc}\fontshape{n}\selectfont Helvetica Narrow}
+        \item {\fontfamily{phv}\fontseries{mc}\fontshape{sl}\selectfont Helvetica Narrow Oblique}
+
+        \item {\fontfamily{phv}\fontseries{bc}\fontshape{sl}\selectfont Helvetica Narrow Bold}
+        \item {\fontfamily{phv}\fontseries{bc}\fontshape{sc}\selectfont Helvetica Narrow Bold
+ Oblique}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Inconsolata}
+    \begin{itemize}
+    \item {\fontfamily{fi4}\selectfont Inconsolata}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Latin Modern}
+    \begin{itemize}
+    \item {\fontfamily{lmr}\selectfont Latin Modern}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Latin Modern Sans}
+    \begin{itemize}
+    \item {\fontfamily{lmss}\selectfont Latin Modern Sans}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Latin Modern Typewriter}
+    \begin{itemize}
+    \item {\fontfamily{lmtt}\selectfont Latin Modern Typewriter}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{New Century Schoolbook}
+    \begin{itemize}
+    \item {\fontfamily{pnc}\selectfont New Century Schoolbook}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Open Sans}
+    \begin{itemize}
+        \item {\fontfamily{fos}\selectfont Open Sans}
+        \item {\fontfamily{fos}\fontseries{l}\selectfont Open Sans Light}
+        \item {\fontfamily{fos}\fontseries{cl}\selectfont Open Sans Condensed Light}
+        \item {\fontfamily{fos}\fontseries{eb}\selectfont Open Sans Extra Bold}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Palatino}
+    \begin{itemize}
+        \item {\fontfamily{ppl}\selectfont Palatino}
+        \item {\fontfamily{ppl}\fontseries{m}\selectfont Palatino Roman}
+        \item {\fontfamily{ppl}\fontseries{b}\selectfont Palatino Bold}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    % \subsection{Roboto}
+    % As séries disponíveis são "regular, bold, medium, black, light, thin".
+    % Os shapes disponível é "condensed".
+    % \begin{itemize}
+    %     \item {\fontfamily{roboto}\selectfont Roboto}
+    %     \item {\fontfamily{roboto}\selectfont Roboto Condensed}
+    %     \item {\fontfamily{roboto}\selectfont Roboto Slab}
+    %     \item {\fontfamily{roboto}\selectfont Roboto Mono}
+    % \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Times}
+    \begin{itemize}
+        \item {\fontfamily{ptm}\selectfont Times}
+        \item {\fontfamily{ptm}\fontseries{m}\selectfont Times Roman}
+        \item {\fontfamily{ptm}\fontseries{b}\selectfont Times Bold}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Uncial}
+    \begin{itemize}
+        \item {\fontfamily{uncl}\selectfont Uncial}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Utopia}
+    \begin{itemize}
+        \item {\fontfamily{put}\selectfont Utopia}
+        \item {\fontfamily{put}\fontseries{m}\selectfont Utopia Regular}
+        \item {\fontfamily{put}\fontseries{b}\selectfont Utopia Bold}
+    \end{itemize}
+
+    % ------------------------------------------------------------------------
+
+    \subsection{Zapf Chancery}
+    \begin{itemize}
+        \item {\fontfamily{pzx}\selectfont Zapf Chancery}
+        \item {\fontfamily{pzx}\fontseries{m}\selectfont Zapf Chancery Medium}
+    \end{itemize}
+
+
+    % \fontshape{n}
+    % \fontshape{it}
+    % \fontshape{sc}
+    % \fontshape{scit}

@@ -1,0 +1,117 @@
+%===================================================================================================
+% Autor             : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+% Data de criação   : 29 de Janeiro de 2019
+% Referencias       : https://pt.overleaf.com/learn
+%                     https://texblog.org/code-snippets/beamer-presentation/
+%===================================================================================================
+
+% Opções Memoir
+% 12pt       tamanho da fonte
+% openright  capítulos começam em pág ímpar (insere página vazia caso preciso)
+% twoside    para impressão em recto e verso. Oposto a oneside
+% a4paper    % tamanho do papel.
+
+% Opções Abntex2
+% Para converter as seções pra etra maiúscula
+% chapter=TITLE, section=TITLE, subsection=TITLE, subsubsection=TITLE
+% Para converter as seções pra letra minúscula
+% chapter=title, section=title, subsection=title, subsubsection=title
+% sumario=tradicional|abnt-6027-2012
+% Opções do pacote Babel
+% english   idioma adicional para hifenização
+% french    idioma adicional para hifenização
+% spanish   idioma adicional para hifenização
+% brazil    % o último idioma é o principal do documento
+
+\documentclass[
+    12pt,openright,twoside,a4paper, % Memoir
+    chapter=TITLE,section=TITLE,subsection=TITLE,subsubsection=TITLE, % Abntex2
+    sumario=abnt-6027-2012,
+    english, french, spanish, brazil, % Babel
+]{abntex2}
+
+
+% Pacotes configurados para utilização
+\include{libraries/document-packages-abnt}
+
+% Informações pré-definidas
+\include{templates/abnt-research-project/variables}
+
+% Configurações do documento
+\include{libraries/document-config-abnt}
+
+% Fontes que acompanham o texlive
+% \include{libraries/fonts/avant}
+% \include{libraries/fonts/arial}
+% \include{libraries/fonts/bera}
+% \include{libraries/fonts/cabin}
+% \include{libraries/fonts/fira}
+% \include{libraries/fonts/lmodern}
+\include{libraries/fonts/roboto}
+
+% Inclui as entradas do glossario
+\include{templates/abnt-research-project/glossary}
+
+\begin{document}
+
+    % Define o idioma do documento (conforme pacotes do babel)
+    \selectlanguage{brazil}
+
+    % Retira espaço extra obsoleto entre as frases.
+    \frenchspacing
+
+    %===============================================
+    % ELEMENTOS PRÉ-TEXTUAIS
+    %===============================================
+    \pretextual
+
+    \input{templates/abnt-research-project/pre-textuais/01-capa}%
+    \input{templates/abnt-research-project/pre-textuais/02-folha-de-rosto}%
+    \input{templates/abnt-research-project/pre-textuais/03-ilustracoes}%
+    \input{templates/abnt-research-project/pre-textuais/04-tabelas}%
+    \input{templates/abnt-research-project/pre-textuais/05-siglas}%
+    \input{templates/abnt-research-project/pre-textuais/06-simbolos}%
+    \input{templates/abnt-research-project/pre-textuais/07-sumario}%
+
+
+    %===============================================
+    % ELEMENTOS TEXTUAIS
+    %===============================================
+    \textual
+
+    \input{templates/abnt-research-project/textuais/01-introducao}
+    \input{templates/abnt-research-project/textuais/98-capitulo-sobre-glossario}
+    \input{templates/abnt-research-project/textuais/02-capitulo-textual}
+    \input{templates/abnt-research-project/textuais/03-capitulo-comandos}
+
+    % ----------------------------------------------
+    % Finaliza a parte no bookmark do PDF
+    % para que se inicie o bookmark na raiz
+    % e adiciona espaço de parte no Sumário
+    \phantompart
+    % ----------------------------------------------
+
+    \input{templates/abnt-research-project/textuais/99-conclusao}
+
+    %===============================================
+    % ELEMENTOS PÓS-TEXTUAIS
+    %===============================================
+    \postextual
+
+    % ----------------------------------------------
+    % Referências bibliográficas
+    % ----------------------------------------------
+    \bibliography{templates/abnt-research-project/pos-textuais/01-references}
+    \input{templates/abnt-research-project/pos-textuais/02-glossario}
+    \input{templates/abnt-research-project/pos-textuais/03-apendices}
+    \input{templates/abnt-research-project/pos-textuais/04-anexos}
+
+    % ----------------------------------------------
+    % INDICE REMISSIVO
+    % ----------------------------------------------
+
+    \phantompart
+
+    \printindex
+
+\end{document}
