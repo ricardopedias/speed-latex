@@ -1,0 +1,66 @@
+
+
+\chapter{Tabelas}
+
+\lipsum[2]
+
+\def\arraystretch{1.3}%  1 is the default, change whatever you need
+
+% p{width}	Top-aligned column
+% m{width}	Middle-aligned column
+% b{width}	Bottom-aligned column
+% >{\raggedright}	Left-aligned column
+% >{\centering}	Center-aligned column
+% >{\raggedleft}	Right-aligned column
+
+% \usepackage{array}
+%
+% % Any column
+% >{\centering}p{0.1\linewidth}
+%
+% % Last column
+% >{\centering\arraybackslash}p{0.1\linewidth}
+
+\footnotesize
+\begin{longtable}{%
+    |
+    >{\centering}m{2cm}|
+    >{\raggedright}m{5.5cm}|
+    >{\centering}m{3cm}|
+    >{\centering\arraybackslash}m{3cm}
+    |
+}%
+
+    \hline
+
+    \rowcolor{gray}\textcolor{white}{Data}
+    & \textcolor{white}{Descrição}
+    & \textcolor{white}{Autor}
+    & \textcolor{white}{Revisor} \\
+
+    \hline
+
+    \small{10/01/1980}
+    & \small{\lipsum[2]}
+    & \small{Ricardo Pereira}
+    & \small{Tiryon Lenister} \\
+
+    \hline
+
+    \small{10/01/1980}
+    & \small{\lipsum[2]}
+    & \small{Ricardo Pereira}
+    & \small{Tiryon Lenister} \\
+
+    \hline
+
+    \small{10/01/1980}
+    & \small{\lipsum[2]}
+    & \small{Ricardo Pereira}
+    & \small{Tiryon Lenister} \\
+
+    \hline
+
+\end{longtable}
+
+\lipsum[2-8]
