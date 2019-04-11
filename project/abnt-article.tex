@@ -1,0 +1,123 @@
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Autor              : Ricardo Pereira Dias <contato@ricardopdias.com.br>
+% Data de criação    : 29 de Janeiro de 2019
+% Referência         : https://github.com/abntex/abntex2/blob/master/tex/latex/abntex2/abntex2.cls
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% Opções Memoir
+% 12pt       tamanho da fonte
+% openright  capítulos começam em pág ímpar (insere página vazia caso preciso)
+% twoside    para impressão em recto e verso. Oposto a oneside
+% a4paper    % tamanho do papel.
+
+% Opções Abntex2
+% Para converter as seções pra etra maiúscula
+% chapter=TITLE, section=TITLE, subsection=TITLE, subsubsection=TITLE
+% Para converter as seções pra letra minúscula
+% chapter=title, section=title, subsection=title, subsubsection=title
+% sumario=tradicional|abnt-6027-2012
+% Opções do pacote Babel
+% english   idioma adicional para hifenização
+% french    idioma adicional para hifenização
+% spanish   idioma adicional para hifenização
+% brazil    % o último idioma é o principal do documento
+
+\documentclass[
+    article,    % indica que é um artigo acadêmico
+    11pt,openright,oneside,a4paper, % Memoir
+    chapter=TITLE,section=TITLE,subsection=TITLE,subsubsection=TITLE, % Abntex2
+    sumario=tradicional
+    english, french, spanish, brazil, % Babel
+]{abntex2}
+
+% Pacotes configurados para utilização
+\include{libraries/document-packages-abnt}
+
+% Informações pré-definidas
+\include{templates/abnt-article/variables}
+
+% Configurações do documento
+\include{libraries/document-config-abnt}
+
+% Fontes que acompanham o texlive
+% \include{libraries/fonts/avant}
+% \include{libraries/fonts/arial}
+% \include{libraries/fonts/bera}
+% \include{libraries/fonts/cabin}
+% \include{libraries/fonts/fira}
+% \include{libraries/fonts/lmodern}
+\include{libraries/fonts/roboto}
+
+% Inclui as entradas do glossario
+\include{templates/abnt-article/glossary}
+
+% Altera as margens padrões
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% Espaçamento simples
+\SingleSpacing
+
+\begin{document}
+
+    % Define o idioma do documento (conforme pacotes do babel)
+    \selectlanguage{brazil}
+
+    % Retira espaço extra obsoleto entre as frases.
+    \frenchspacing
+
+    %---
+    %
+    % Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+    % e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+    % \twocolumn[    % INICIO DE ARTIGO EM DUAS COLUNAS
+    %
+    %---
+
+    %===============================================
+    % ELEMENTOS PRÉ-TEXTUAIS
+    %===============================================
+    \input{templates/abnt-article/pre-textuais/01-inicio}%
+    \input{templates/abnt-article/pre-textuais/02-resumo}%
+
+    % ]  % FIM DE ARTIGO EM DUAS COLUNAS
+    % ---
+
+    \input{templates/abnt-article/pre-textuais/03-aprovacao}%
+
+    %===============================================
+    % ELEMENTOS TEXTUAIS
+    %===============================================
+    \textual
+
+    \input{templates/abnt-article/textuais/01-introducao}%
+    \input{templates/abnt-article/textuais/02-secao-comandos}%
+    \input{templates/abnt-article/textuais/03-secao-cabecalhos-rodapes}%
+    \input{templates/abnt-article/textuais/04-secao-modelos-canonicos}%
+    \input{templates/abnt-article/textuais/05-secao-manual-da-classe}%
+    \input{templates/abnt-article/textuais/98-capitulo-sobre-glossario}
+
+    % ---
+    % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+    % ---
+    \bookmarksetup{startatroot}%
+
+    \input{templates/abnt-article/textuais/99-conclusao}%
+
+
+    %===============================================
+    % ELEMENTOS PÓS-TEXTUAIS
+    %===============================================
+    \postextual
+
+    % ----------------------------------------------------------
+    % Referências bibliográficas
+    % ----------------------------------------------------------
+    \bibliography{templates/abnt-article/pos-textuais/01-references}
+    \input{templates/abnt-article/pos-textuais/02-glossario}
+    \input{templates/abnt-article/pos-textuais/03-apendices}
+    \cftinserthook{toc}{AAA}
+    \input{templates/abnt-article/pos-textuais/04-anexos}
+    \input{templates/abnt-article/pos-textuais/05-agradecimentos}
+
+\end{document}
