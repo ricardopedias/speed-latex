@@ -9,10 +9,7 @@
 /project/assets/*converted-to*
 
 /project/libraries/*.aux
-/project/templates/article/*.aux
-/project/templates/book/*.aux
-/project/templates/letter/*.aux
-/project/templates/report/*.aux
+/project/templates/*/*.aux
 
 /tests/temp
 /tests/article.pdf
