@@ -1,0 +1,131 @@
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Autor             : Ricardo Pereira Dias <rpdesignerfly@gmail.com>
+% Data de criação   : 29 de Janeiro de 2019
+% Referencias       : https://pt.overleaf.com/learn
+%                     https://texblog.org/code-snippets/beamer-presentation/
+%                     https://aprendolatex.wordpress.com/2007/06/09/seccoes-em-latex/
+%                     https://pt.wikibooks.org/wiki/Latex/Se%C3%A7%C3%B5es
+% Este arquivo contém as funções personalizadas para facilitar a criação de documentos
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% Função para criar corpo de texto
+\newcommand{\docBodyText}[1] {
+    {\leavevmode\color{body_text}#1}
+}
+
+\newcommand{\link}[1] {\ignorespaces
+    \textcolor{link_text}{#1}
+    \ignorespaces
+}
+
+\newcommand{\textNormal}[1] {\ignorespaces
+    \textcolor{body_text}{#1}
+    \ignorespaces
+}
+
+\newcommand{\textSuccess}[1] {\ignorespaces
+    \textcolor{success_text}{#1}
+    \ignorespaces
+}
+
+\newcommand{\textDanger}[1] {\ignorespaces
+    \textcolor{danger_text}{#1}
+    \ignorespaces
+}
+
+\newcommand{\textInfo}[1] {\ignorespaces
+    \textcolor{info_text}{#1}
+    \ignorespaces
+}
+
+\newcommand{\textWarning}[1] {\ignorespaces
+    \textcolor{warning_text}{#1}
+    \ignorespaces
+}
+
+\newcommand{\textBold}[1] {\ignorespaces
+    \textbf{#1}
+    \ignorespaces
+}
+
+\newcommand{\textItalic}[1] {\ignorespaces
+    \textit{#1}
+    \ignorespaces
+}
+
+% Especiais
+
+\newcommand{\textUnderline}[1] {\ignorespaces
+    \uline{#1}
+    \ignorespaces
+}
+
+\newcommand{\textUnderlineDanger}[1] {\ignorespaces
+    {\color{danger_text}\uline{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textUnderlineSuccess}[1] {\ignorespaces
+    {\color{success_text}\uline{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textDouble}[1] {\ignorespaces
+    \uuline{#1}
+    \ignorespaces
+}
+
+\newcommand{\textDoubleDanger}[1] {\ignorespaces
+    {\color{danger_text}\uuline{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textDoubleSuccess}[1] {\ignorespaces
+    {\color{success_text}\uuline{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textWave}[1] {\ignorespaces
+    \uwave{#1}
+    \ignorespaces
+}
+
+\newcommand{\textWaveDanger}[1] {\ignorespaces
+    {\color{danger_text}\uwave{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textWaveSuccess}[1] {\ignorespaces
+    {\color{success_text}\uwave{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textDelete}[1] {\ignorespaces
+    \sout{#1}
+    \ignorespaces
+}
+
+\newcommand{\textDeleteDanger}[1] {\ignorespaces
+    {\color{danger_text}\sout{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textDeleteSuccess}[1] {\ignorespaces
+    {\color{success_text}\sout{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textStriped}[1] {\ignorespaces
+    \xout{#1}
+    \ignorespaces
+}
+
+\newcommand{\textStripedDanger}[1] {\ignorespaces
+    {\color{danger_text}\xout{#1}}
+    \ignorespaces
+}
+
+\newcommand{\textStripedSuccess}[1] {\ignorespaces
+    {\color{success_text}\xout{#1}}
+    \ignorespaces
+}

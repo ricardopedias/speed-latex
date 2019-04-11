@@ -1,0 +1,244 @@
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Autor              : Ricardo Pereira Dias <contato@ricardopdias.com.br>
+% Data de criação    : 29 de Janeiro de 2019
+% Referência         : https://github.com/abntex/abntex2/blob/master/tex/latex/abntex2/abntex2.cls
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% =========================================================================
+% COR PADRÂO DOS TEXTOS
+% =========================================================================
+\color{body_text}
+
+% =========================================================================
+% TIPO DE FAMILIA PADRÃO
+% =========================================================================
+% Existem 3 tipos de familias
+% roman (serif)              \textrm     \rmfamily
+% sans serif                 \textsf     \sffamily
+% typewriter (monospace)     \texttt     \ttfamily
+
+\renewcommand{\familydefault}{\sfdefault} % sans
+% \renewcommand{\familydefault}{\rmdefault} % roman
+
+% =========================================================================
+% CONFIGURAÇÃO DO BACKREF
+% =========================================================================
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 %
+        Nenhuma citação no texto.%
+    \or
+        Citado na página #2.%
+    \else
+        Citado #1 vezes nas páginas #2.%
+    \fi%
+}%
+
+%=========================================================================
+% APARÊNCIA DO PDF FINAL
+%=========================================================================
+
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title},
+        pdfauthor={\@author},
+        % pdfsubject={\projectName},
+        pdfcreator={Speed Latex with abnTeX2},
+        pdfkeywords={latex}{abntex2}{speed latex},
+        colorlinks=true,          % false: boxed links; true: colored links
+        linkcolor=link_text,   % color of internal links
+        citecolor=cite_text,   % color of links to bibliography
+        filecolor=file_text,   % color of file links
+        urlcolor=url_text,
+        bookmarksdepth=4
+}
+\makeatother
+
+%=========================================================================
+% CABEÇALHOS E RODAPÉS
+%=========================================================================
+
+\makepagestyle{abntheadings}
+\makepagestyle{abntchapfirst}
+
+% ------------------------------------------------------------------------
+% Cabeçalhos
+% ------------------------------------------------------------------------
+
+% Primeira página de um capítulo (abnt é sempre impar)
+\makeoddhead{abntchapfirst}
+    {\color{header_text}\headerOddLeft}   % esquerda
+    {\color{header_text}\headerOddCenter} % centro
+    {\color{header_text}\headerOddRight}  % direita
+
+% Primeira página de um capítulo (se form customizado para par)
+\makeevenhead{abntchapfirst}
+    {\color{header_text}\headerEvenLeft}   % esquerda
+    {\color{header_text}\headerEvenCenter} % centro
+    {\color{header_text}\headerEvenRight}  % direita
+
+% Página ímpar ou com oneside
+\makeoddhead{abntheadings}
+    {\color{header_text}\headerOddLeft}   % esquerda
+    {\color{header_text}\headerOddCenter} % centro
+    {\color{header_text}\headerOddRight}  % direita
+
+% Página par
+\makeevenhead{abntheadings}
+    {\color{header_text}\headerEvenLeft}   % esquerda
+    {\color{header_text}\headerEvenCenter} % centro
+    {\color{header_text}\headerEvenRight}  % direita
+
+% ------------------------------------------------------------------------
+% Rodapés
+% ------------------------------------------------------------------------
+% Primeira página de um capítulo
+\makeoddfoot{abntchapfirst}
+    {\color{footer_text}\footerOddLeft}   % esquerda
+    {\color{footer_text}\footerOddCenter} % centro
+    {\color{footer_text}\footerOddRight}  % direita
+
+% Página ímpar ou com oneside
+\makeoddfoot{abntheadings}
+    {\color{footer_text}\footerOddLeft}   % esquerda
+    {\color{footer_text}\footerOddCenter} % centro
+    {\color{footer_text}\footerOddRight}  % direita
+
+% Página par
+\makeevenfoot{abntheadings} % pagina par
+    {\color{footer_text}\footerEvenLeft}   % esquerda
+    {\color{footer_text}\footerEvenCenter} % centro
+    {\color{footer_text}\footerEvenRight}  % direita
+
+% ------------------------------------------------------------------------
+% LINHAS SEPERADORAS DE CABEÇALHOS E RODAPÉS
+% ------------------------------------------------------------------------
+% Cores
+\makeheadfootruleprefix{abntheadings}
+    {\color{header_rule}}   % cor da linha do cabeçalho
+    {\color{footer_rule}}   % cor da linha do rodapé
+\makeheadfootruleprefix{abntchapfirst}
+    {\color{header_rule}}   % cor da linha do cabeçalho
+    {\color{footer_rule}}   % cor da linha do rodapé
+% Dimensões
+\makeheadrule{abntheadings}
+    {\textwidth}        % Abrangência da linha do cabeçalho
+    {\headerRuleHeight} % Espessura da linha do cabeçalho
+\makefootrule{abntheadings}
+    {\textwidth}        % Abrangência da linha do rodapé
+    {\footerRuleHeight} % Espessura da linha do rodapé
+    {3pt}               % Distancia entre a linha e o rodapé
+\makeheadrule{abntchapfirst}
+    {\textwidth}        % Abrangência da linha do cabeçalho
+    {\headerRuleHeight} % Espessura da linha do cabeçalho
+\makefootrule{abntchapfirst}
+    {\textwidth}        % Abrangência da linha do rodapé
+    {\footerRuleHeight} % Espessura da linha do rodapé
+    {3pt}               % Distancia entre a linha e o rodapé
+
+%=========================================================================
+% FIGURAS E TABELAS
+%=========================================================================
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+
+%=========================================================================
+% QUADROS E LISTA DE QUADROS
+%=========================================================================
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space}
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+\setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+
+
+%=========================================================================
+% ESPEÇAMENTOS, ENTRE-LINHAS E PARÁGRAFOS
+%=========================================================================
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{2.5cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+%=========================================================================
+% SUMÁRIO
+%=========================================================================
+
+% Personaliza as linhas pontilhadas
+\renewcommand{\cftpartleader}{ \color{summary_item}\dotfill}
+\renewcommand{\cftchapterleader}{ \color{summary_item}\dotfill}
+\renewcommand{\cftsectionleader}{ \color{summary_item}\dotfill}
+\renewcommand{\cftsubsectionleader}{ \color{summary_item}\dotfill}
+\renewcommand{\cftsubsubsectionleader}{ \color{summary_item}\dotfill}
+
+
+%=========================================================================
+% CAPÍTULOS E SEÇÕES
+%=========================================================================
+
+\renewcommand{\ABNTEXpartfont}{\color{part_text}\partStyle\partFont}
+\renewcommand{\ABNTEXpartfontsize}{\partSize}
+\renewcommand{\partnamefont}{\color{part_count}\partAssertionStyle\partAssertionFont\partAssertionSize}
+\renewcommand{\partnumfont}{\color{part_count}\partAssertionStyle\partAssertionFont\partAssertionSize}
+
+% Adiciona ponto no final do numero de seções
+% \setsecnumformat{\csname the#1\endcsname.\quad}
+
+% http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
+
+% Capítulos
+\renewcommand{\ABNTEXchapterfont}{\color{chapter_text}\chapterStyle\chapterFont}
+\renewcommand{\ABNTEXchapterfontsize}{\chapterSize}
+\renewcommand{\chapnumfont}{\color{chapter_count}\chapterStyle\chapterFont}
+% \renewcommand*\thechapter{\arabic{chapter}\sectioningFinalDot} % \Alph, \Roman, \arabic
+
+% Seções
+\renewcommand{\ABNTEXsectionfont}{\color{section_text}\sectionStyle\sectionFont}
+\renewcommand{\ABNTEXsectionfontsize}{\sectionSize}
+% \renewcommand\thesection{\arabic{chapter}.\arabic{section}\sectioningFinalDot} % \Alph, \Roman, \arabic
+%\setsecnumformat{\csname\color{section_count}the#1\endcsname\quad}
+
+% Sub-section
+\renewcommand{\ABNTEXsubsectionfont}{\color{subsection_text}\subsectionStyle\subsectionFont}
+\renewcommand{\ABNTEXsubsectionfontsize}{\subsectionSize}
+% \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}\sectioningFinalDot} % \Alph, \Roman, \arabic
+
+% Sub-sub-section
+\renewcommand{\ABNTEXsubsubsectionfont}{\color{subsubsection_text}\subsubsectionStyle\subsubsectionFont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\subsubsectionSize}
+% \renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}\sectioningFinalDot} % \Alph, \Roman, \arabic
+
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\color{subsubsubsection_text}\subsubsubsectionStyle\subsubsubsectionFont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\subsubsectionSize}
+% \renewcommand{\theparagraph}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}\sectioningFinalDot} % \Alph, \Roman, \arabic
+
+% ------------------------------------------------------------------------
+% compila o indice
+% ------------------------------------------------------------------------
+\makeindex
